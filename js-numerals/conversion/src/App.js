@@ -9,7 +9,7 @@ function App() {
     const { target: { value } } = e;
 
     if(value){
-      setNumber(Number(value));
+      setNumber(Math.round(Number(value)));
     } else {
       setNumber();
     }
