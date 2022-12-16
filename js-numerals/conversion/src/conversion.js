@@ -4,23 +4,21 @@ const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'si
 
 function convertMillions(num) {
   if (num >= 1000000) {
-    return convertMillions(Math.floor(num / 1000000)) + " million " + convertThousands(num % 1000000);
+    return `${convertMillions(Math.floor(num / 1000000))} million ${convertThousands(num % 1000000)}`;
   }
   return convertThousands(num);
 }
 
 function convertThousands(num) {
   if (num >= 1000) {
-    return convertHundreds(Math.floor(num / 1000)) + " thousand " + convertHundreds(num % 1000);
+    return `${convertHundreds(Math.floor(num / 1000))} thousand ${convertHundreds(num % 1000)}`;
   }
   return convertHundreds(num);
 }
 
 function convertHundreds(num) {
-  if (num > 99 && num % 100 !== 0) {
-    return ones[Math.floor(num / 100)] + " hundred and " + convertTens(num % 100);
-  } else if(num > 99 && num % 100 ===0){
-    return ones[Math.floor(num / 100)] + " hundred " + convertTens(num % 100);
+  if (num > 99) {
+    return `${ones[Math.floor(num / 100)]} hundred ${(num % 10)===0 ? '' : ' and '} ${convertTens(num % 100)}`;
   }
   return convertTens(num);
 }
@@ -28,27 +26,24 @@ function convertHundreds(num) {
 function convertTens(num) {
   if (num < 10) return ones[num];
   else if (num >= 10 && num < 20) return teens[num - 10];
-  else if(num % 10 !== 0){
-    return tens[Math.floor(num / 10)] + "-" + ones[num % 10];
-  }
-  return tens[Math.floor(num / 10)] + " " + ones[num % 10];
+  return `${tens[Math.floor(num / 10)]}${(num % 10) === 0 ? '' : '-'}${ones[num % 10]}`;
 }
 
 export function convertNumber(num) {
   if (num === 0) return "zero";
   else if(num < 0){
-    return "Negative " + convertMillions(num * -1);
+    return `Negative ${convertMillions(-num)}`;
   }
-  else return convertMillions(num);
+  return convertMillions(num);
 }
 
 export function britishConversion(num){
     if(num <= 2000 && num >= 1000){
-      return convertHundreds(Math.floor(num / 100)) + " hundreds " + convertTens(num % 100);
+      return `${convertHundreds(Math.floor(num / 100))} hundred ${convertTens(num % 100)}`;
     }
     else if(num <= -1000 && num >= -2000){
-      return "Negative " + convertHundreds(Math.floor(-num / 100)) + " hundreds " + convertTens(-num % 100);
+      return `Negative ${convertHundreds(Math.floor(-num / 100))} hundred ${convertTens(-num % 100)}`;
     }
-    else return convertNumber(num);
+    return convertNumber(num);
   }
 
