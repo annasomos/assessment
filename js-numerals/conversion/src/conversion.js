@@ -17,19 +17,21 @@ function convertThousands(num) {
 }
 
 function convertHundreds(num) {
-  if (num > 99) {
+  if (num > 99 && num % 100 !== 0) {
+    return ones[Math.floor(num / 100)] + " hundred and " + convertTens(num % 100);
+  } else if(num > 99 && num % 100 ===0){
     return ones[Math.floor(num / 100)] + " hundred " + convertTens(num % 100);
-  } else {
-    return convertTens(num);
   }
+  return convertTens(num);
 }
 
 function convertTens(num) {
   if (num < 10) return ones[num];
   else if (num >= 10 && num < 20) return teens[num - 10];
-  else {
-    return tens[Math.floor(num / 10)] + " " + ones[num % 10];
+  else if(num % 10 !== 0){
+    return tens[Math.floor(num / 10)] + "-" + ones[num % 10];
   }
+  return tens[Math.floor(num / 10)] + " " + ones[num % 10];
 }
 
 export function convertNumber(num) {
