@@ -5,17 +5,15 @@ const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'si
 function convertMillions(num) {
   if (num >= 1000000) {
     return convertMillions(Math.floor(num / 1000000)) + " million " + convertThousands(num % 1000000);
-  } else {
-    return convertThousands(num);
   }
+  return convertThousands(num);
 }
 
 function convertThousands(num) {
   if (num >= 1000) {
     return convertHundreds(Math.floor(num / 1000)) + " thousand " + convertHundreds(num % 1000);
-  } else {
-    return convertHundreds(num);
   }
+  return convertHundreds(num);
 }
 
 function convertHundreds(num) {
@@ -47,9 +45,8 @@ export function britishConversion(num){
       return convertHundreds(Math.floor(num / 100)) + " hundreds " + convertTens(num % 100);
     }
     else if(num <= -1000 && num >= -2000){
-      num = num * -1;
-      return "Negative " + convertHundreds(Math.floor(num / 100)) + " hundreds " + convertTens(num % 100);
+      return "Negative " + convertHundreds(Math.floor(-num / 100)) + " hundreds " + convertTens(-num % 100);
     }
-    else return "Same as above :)";
+    else return convertNumber(num);
   }
 
