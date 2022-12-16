@@ -18,4 +18,4 @@ const ConvertedNumber = ({number}) => {
   )
 }
 
-export default ConvertedNumber
+export default ConvertedNumber;

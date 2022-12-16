@@ -11,7 +11,7 @@ function convertMillions(num) {
 
 function convertThousands(num) {
   if (num >= 1000) {
-    return `${convertHundreds(Math.floor(num / 1000))} thousand ${convertHundreds(num % 1000)}`;
+    return `${convertHundreds(Math.floor(num / 1000))} thousand ${((num % 1000) > 100 || (num % 1000) === 0) ? '' : ' and '}${convertHundreds(num % 1000)}`;
   }
   return convertHundreds(num);
 }
