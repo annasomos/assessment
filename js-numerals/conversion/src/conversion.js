@@ -2,6 +2,14 @@ const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'
 const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
+function convertMillions(num) {
+  if (num >= 1000000) {
+    return convertMillions(Math.floor(num / 1000000)) + " million " + convertThousands(num % 1000000);
+  } else {
+    return convertThousands(num);
+  }
+}
+
 function convertThousands(num) {
   if (num >= 1000) {
     return convertHundreds(Math.floor(num / 1000)) + " thousand " + convertHundreds(num % 1000);
