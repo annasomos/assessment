@@ -36,6 +36,9 @@ function convertTens(num) {
 
 export function convertNumber(num) {
   if (num === 0) return "zero";
+  else if(num < 0){
+    return "Negative " + convertMillions(num * -1)
+  }
   else return convertMillions(num);
 }
 
