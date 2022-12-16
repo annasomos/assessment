@@ -7,7 +7,12 @@ const [number,setNumber] = useState(0);
 
   return (
     <div className="App">
-      <input type="number" className="input" id="number" placeholder="Enter a number" onChange={(e) => setNumber(parseInt(e.target.value))}></input>
+      <input type="number" 
+      className="input" 
+      id="number" 
+      placeholder="Enter a number" 
+      onChange={(e) => e.target.value ? setNumber(parseInt(e.target.value)) : setNumber(0)}>
+      </input>
       <ConvertedNumber number={number} />
     </div>
   );
