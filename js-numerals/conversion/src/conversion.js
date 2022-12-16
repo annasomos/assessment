@@ -33,3 +33,8 @@ function convertTens(num) {
     return tens[Math.floor(num / 10)] + " " + ones[num % 10];
   }
 }
+
+function convertNumber(num) {
+  if (num === 0) return "zero";
+  else return convertMillions(num);
+}
