@@ -34,7 +34,8 @@ function convertTens(num) {
   }
 }
 
-function convertNumber(num) {
+export function convertNumber(num) {
   if (num === 0) return "zero";
   else return convertMillions(num);
 }
+
