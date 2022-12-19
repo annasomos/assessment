@@ -1,5 +1,5 @@
 const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+const tens = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
 function convertMillions(num) {
@@ -32,7 +32,7 @@ function convertTens(num) {
 export function convertNumber(num) {
   if (num === 0) return "zero";
   else if(num < 0){
-    return `Negative ${convertMillions(-num)}`;
+    return `negative ${convertMillions(-num)}`;
   }
   return convertMillions(num);
 }
@@ -42,7 +42,7 @@ export function britishConversion(num){
       return `${convertHundreds(Math.floor(num / 100))} hundred ${num % 100 === 0 ? '' : 'and '}${convertTens(num % 100)}`;
     }
     else if(num <= -1000 && num >= -2000){
-      return `Negative ${convertHundreds(Math.floor(-num / 100))} hundred ${convertTens(-num % 100)}`;
+      return `negative ${convertHundreds(Math.floor(-num / 100))} hundred ${convertTens(-num % 100)}`;
     }
     return convertNumber(num);
   }

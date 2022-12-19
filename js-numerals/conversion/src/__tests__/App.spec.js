@@ -9,10 +9,18 @@ afterEach(()=> {
   cleanup();
 })
 
-test('User types a whole number between 0 and 999999999', () => {
+test('User types 7', () => {
   render(<App/>);
   const input = screen.getByPlaceholderText("Enter a number");
   fireEvent.change(input, {target: {value: '7'}});
   const text = screen.getAllByText(/seven/);
+  expect(text.length).toBe(2);
+})
+
+test('User types 42', () => {
+  render(<App/>);
+  const input = screen.getByPlaceholderText("Enter a number");
+  fireEvent.change(input, {target: {value: '42'}});
+  const text = screen.getAllByText(/forty-two/);
   expect(text.length).toBe(2);
 })
