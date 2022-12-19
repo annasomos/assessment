@@ -52,6 +52,7 @@ code {
 .input{
   text-align: center;
   margin: auto;
+  padding: 1rem;
 }
 
 input{
