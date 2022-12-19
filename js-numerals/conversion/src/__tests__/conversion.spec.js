@@ -10,3 +10,11 @@ test('42 === forty-two', () => {
   expect(britishConversion(42)).toBe('forty-two');
 })
 
+test('1999 === one thousand nine hundred and ninety-nine', () => {
+  expect(convertNumber(1999)).toBe('one thousand nine hundred and ninety-nine');
+})
+
+test('1999 === nineteen hundred and ninety-nine', () => {
+  expect(britishConversion(1999)).toBe('nineteen hundred and ninety-nine');
+})
+

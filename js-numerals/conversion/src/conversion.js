@@ -47,7 +47,7 @@ function convertMillions(num) {
 function convertThousands(num) {
   if (num >= 1000) {
     return `${convertHundreds(Math.floor(num / 1000))} thousand ${
-      num % 1000 > 100 || num % 1000 === 0 ? "" : " and "
+      num % 1000 > 100 || num % 1000 === 0 ? "" : "and "
     }${convertHundreds(num % 1000)}`;
   }
   return convertHundreds(num);
@@ -56,8 +56,8 @@ function convertThousands(num) {
 function convertHundreds(num) {
   if (num > 99) {
     return `${ones[Math.floor(num / 100)]} hundred ${
-      num % 10 === 0 ? "" : " and "
-    } ${convertTens(num % 100)}`;
+      num % 10 === 0 ? "" : "and "
+    }${convertTens(num % 100)}`;
   }
   return convertTens(num);
 }
@@ -80,12 +80,12 @@ export function convertNumber(num) {
 
 export function britishConversion(num) {
   if (num < 2000 && num > 1000) {
-    return `${convertHundreds(Math.floor(num / 100))} hundred ${
-      num % 100 === 0 ? "" : "and "
+    return `${convertHundreds(Math.floor(num / 100))} hundred${
+      num % 100 === 0 ? " " : " and "
     }${convertTens(num % 100)}`;
   } else if (num <= -1000 && num >= -2000) {
-    return `negative ${convertHundreds(Math.floor(-num / 100))} hundred ${
-      num % 100 === 0 ? "" : "and "
+    return `negative ${convertHundreds(Math.floor(-num / 100))} hundred${
+      num % 100 === 0 ? " " : " and "
     }${convertTens(-num % 100)}`;
   }
   return convertNumber(num);
