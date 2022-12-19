@@ -40,3 +40,14 @@ test('User submits 1999', () => {
   const textUK = screen.getAllByText(/nineteen hundred and ninety-nine/);
   expect(textUK.length).toBe(1);
 })
+
+test('User submits 2001', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '2001'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/two thousand and one/);
+  expect(textUS.length).toBe(1);
+})
+

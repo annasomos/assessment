@@ -18,3 +18,7 @@ test('1999 === nineteen hundred and ninety-nine', () => {
   expect(britishConversion(1999)).toBe('nineteen hundred and ninety-nine');
 })
 
+test('2001 === two thousand and one', () => {
+  expect(convertNumber(2001)).toBe('two thousand and one');
+})
+
