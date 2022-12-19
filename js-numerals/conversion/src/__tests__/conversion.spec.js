@@ -76,3 +76,7 @@ test('1300420 === one million three hundred thousand four hundred and twenty', (
 test('-1300420 === negative one million three hundred thousand four hundred and twenty', () => {
   expect(convertNumber(-1300420)).toBe('negative one million three hundred thousand four hundred and twenty');
 })
+
+test('0 === zero', () => {
+  expect(convertNumber(0)).toBe('zero');
+})

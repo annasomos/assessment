@@ -173,3 +173,13 @@ test('User submits -1300420', () => {
   const textUS = screen.getAllByText(/negative one million three hundred thousand four hundred and twenty/);
   expect(textUS.length).toBe(1);
 })
+
+test('User submits 0', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '0'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/zero/);
+  expect(textUS.length).toBe(1);
+})
