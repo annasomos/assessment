@@ -3,7 +3,7 @@ import { convertNumber, britishConversion } from "./conversion"
 
 const ConvertedNumber = ({number}) => {
   const converted = useMemo(() => {
-    return number ? convertNumber(number) : number;
+    return number || number===0 ? convertNumber(number) : number;
   }, [number])
 
   const britishConverted = useMemo(() => {
@@ -12,6 +12,9 @@ const ConvertedNumber = ({number}) => {
 
   const isBritishNeeded = useMemo(() => {
     if(number > 1000 && number < 2000){
+      return true;
+    }
+    else if(number < -1000 && number > -2000){
       return true;
     }
     return false;

@@ -42,7 +42,7 @@ export function britishConversion(num){
       return `${convertHundreds(Math.floor(num / 100))} hundred ${num % 100 === 0 ? '' : 'and '}${convertTens(num % 100)}`;
     }
     else if(num <= -1000 && num >= -2000){
-      return `negative ${convertHundreds(Math.floor(-num / 100))} hundred ${convertTens(-num % 100)}`;
+      return `negative ${convertHundreds(Math.floor(-num / 100))} hundred ${num % 100 === 0 ? '' : 'and '}${convertTens(-num % 100)}`;
     }
     return convertNumber(num);
   }
