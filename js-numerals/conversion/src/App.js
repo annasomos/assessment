@@ -5,10 +5,11 @@ function App() {
   const [number, setNumber] = useState();
 
   const handleNumberSubmit = () => {
-    const value = document.getElementById("number").value;
+    const inputValue = document.getElementById("number").value;
+    const numericValue = Math.round(Number(inputValue));
 
-    if (value) {
-      setNumber(Math.round(Number(value)));
+    if (inputValue) {
+      (numericValue >= -999999999 && numericValue <= 999999999) ? setNumber(numericValue) : setNumber();
     } else {
       setNumber();
     }

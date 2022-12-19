@@ -7,13 +7,11 @@ const ConvertedNumber = ({ number }) => {
   }, [number]);
 
   const britishConverted = useMemo(() => {
-    return number ? britishConversion(number) : number;
+    return number || number === 0 ? britishConversion(number) : number;
   }, [number]);
 
   const isBritishNeeded = useMemo(() => {
-    if (number > 1000 && number < 2000) {
-      return true;
-    } else if (number < -1000 && number > -2000) {
+    if (Math.abs(number) > 1000 && Math.abs(number) < 2000) {
       return true;
     }
     return false;
