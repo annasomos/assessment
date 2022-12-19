@@ -4,7 +4,8 @@ import ConvertedNumber from "./ConvertedNumber";
 function App() {
   const [number, setNumber] = useState();
 
-  const handleNumberSubmit = () => {
+  const handleNumberSubmit = (e) => {
+    e.preventDefault();
     const inputValue = document.getElementById("number").value;
     const numericValue = Math.round(Number(inputValue));
 
@@ -26,12 +27,12 @@ function App() {
         </p>
       </div>
       <div className="container">
-        <div className="input">
+        <form className="input">
           <input type="number" id="number" placeholder="Enter a number"></input>{" "}
           <button type="submit" onClick={handleNumberSubmit}>
             Convert
           </button>
-        </div>
+        </form>
         <ConvertedNumber number={number} />
       </div>
     </div>
