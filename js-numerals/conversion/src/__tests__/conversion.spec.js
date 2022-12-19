@@ -30,3 +30,7 @@ test('17999 === seventeen thousand nine hundred and ninety-nine', () => {
 test('100001 === one hundred thousand and one', () => {
   expect(convertNumber(100001)).toBe('one hundred thousand and one');
 })
+
+test('342251  === three hundred and forty-two thousand two hundred and fifty-one', () => {
+  expect(convertNumber(342251)).toBe('three hundred and forty-two thousand two hundred and fifty-one');
+})
