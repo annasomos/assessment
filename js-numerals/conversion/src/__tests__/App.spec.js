@@ -254,3 +254,24 @@ test('User submits -999999999.55', () => {
   expect(textUS.length).toBe(1);
 })
 
+test('User submits 123,55', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '123,55'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/one hundred and twenty-four/);
+  expect(textUS.length).toBe(1);
+})
+
+test('User submits 128,37', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '128,37'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/one hundred and twenty-eight/);
+  expect(textUS.length).toBe(1);
+})
+
+
