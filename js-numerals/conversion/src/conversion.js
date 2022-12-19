@@ -38,8 +38,8 @@ export function convertNumber(num) {
 }
 
 export function britishConversion(num){
-    if(num <= 2000 && num >= 1000){
-      return `${convertHundreds(Math.floor(num / 100))} hundred ${convertTens(num % 100)}`;
+    if(num < 2000 && num > 1000){
+      return `${convertHundreds(Math.floor(num / 100))} hundred ${num % 100 === 0 ? '' : 'and '}${convertTens(num % 100)}`;
     }
     else if(num <= -1000 && num >= -2000){
       return `Negative ${convertHundreds(Math.floor(-num / 100))} hundred ${convertTens(-num % 100)}`;
