@@ -55,8 +55,8 @@ function convertThousands(num) {
 
 function convertHundreds(num) {
   if (num > 99) {
-    return `${ones[Math.floor(num / 100)]} hundred ${
-      num % 10 === 0 ? "" : "and "
+    return `${ones[Math.floor(num / 100)]} hundred${
+      num % 10 === 0 ? "" : " and "
     }${convertTens(num % 100)}`;
   }
   return convertTens(num);
