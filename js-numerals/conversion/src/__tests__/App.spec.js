@@ -183,3 +183,13 @@ test('User submits 0', () => {
   const textUS = screen.getAllByText(/zero/);
   expect(textUS.length).toBe(1);
 })
+
+test('User submits empty string', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: ''}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/Invalid input/);
+  expect(textUS.length).toBe(1);
+})
