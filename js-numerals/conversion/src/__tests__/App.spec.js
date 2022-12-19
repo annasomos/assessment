@@ -184,7 +184,7 @@ test('User submits 0', () => {
   expect(textUS.length).toBe(1);
 })
 
-test('User submits empty string', () => {
+test('User submits invalid input empty string', () => {
   render(<App/>)
   const input = screen.getByPlaceholderText("Enter a number");
   const button = screen.getByText('Convert');
@@ -234,7 +234,7 @@ test('User submits -999999999.43', () => {
   expect(textUS.length).toBe(1);
 })
 
-test('User submits 999999999.55', () => {
+test('User submits invalid input 999999999.55', () => {
   render(<App/>)
   const input = screen.getByPlaceholderText("Enter a number");
   const button = screen.getByText('Convert');
@@ -244,7 +244,7 @@ test('User submits 999999999.55', () => {
   expect(textUS.length).toBe(1);
 })
 
-test('User submits -999999999.55', () => {
+test('User submits invalid input -999999999.55', () => {
   render(<App/>)
   const input = screen.getByPlaceholderText("Enter a number");
   const button = screen.getByText('Convert');
@@ -254,24 +254,48 @@ test('User submits -999999999.55', () => {
   expect(textUS.length).toBe(1);
 })
 
-test('User submits 123,55', () => {
+test('User submits invalid input 12345678999', () => {
   render(<App/>)
   const input = screen.getByPlaceholderText("Enter a number");
   const button = screen.getByText('Convert');
-  fireEvent.change(input, {target: {value: '123,55'}});
+  fireEvent.change(input, {target: {value: '12345678999'}});
   fireEvent.click(button);
-  const textUS = screen.getAllByText(/one hundred and twenty-four/);
+  const textUS = screen.getAllByText(/Invalid input/);
   expect(textUS.length).toBe(1);
 })
 
-test('User submits 128,37', () => {
+test('User submits 1003', () => {
   render(<App/>)
   const input = screen.getByPlaceholderText("Enter a number");
   const button = screen.getByText('Convert');
-  fireEvent.change(input, {target: {value: '128,37'}});
+  fireEvent.change(input, {target: {value: '1003'}});
   fireEvent.click(button);
-  const textUS = screen.getAllByText(/one hundred and twenty-eight/);
+  const textUS = screen.getAllByText(/one thousand and three/);
   expect(textUS.length).toBe(1);
+  const textUK = screen.getAllByText(/ten hundred and three/);
+  expect(textUK.length).toBe(1);
 })
 
+test('User submits 1011', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '1011'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/one thousand and eleven/);
+  expect(textUS.length).toBe(1);
+  const textUK = screen.getAllByText(/ten hundred and eleven/);
+  expect(textUK.length).toBe(1);
+})
 
+test('User submits 1230', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '1230'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/one thousand two hundred and thirty/);
+  expect(textUS.length).toBe(1);
+  const textUK = screen.getAllByText(/twelve hundred and thirty/);
+  expect(textUK.length).toBe(1);
+})

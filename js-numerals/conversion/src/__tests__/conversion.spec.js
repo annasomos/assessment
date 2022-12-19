@@ -36,6 +36,30 @@ test('-1999 === negative nineteen hundred and ninety-nine', () => {
   expect(britishConversion(-1999)).toBe('negative nineteen hundred and ninety-nine');
 })
 
+test('1003 === ten hundred and three', () => {
+  expect(britishConversion(1003)).toBe('ten hundred and three');
+})
+
+test('1003 === one thousand and three', () => {
+  expect(convertNumber(1003)).toBe('one thousand and three');
+})
+
+test('1011 === one thousand and eleven', () => {
+  expect(convertNumber(1011)).toBe('one thousand and eleven');
+})
+
+test('1011 === ten hundred and eleven', () => {
+  expect(britishConversion(1011)).toBe('ten hundred and eleven');
+})
+
+test('1230 === twelve hundred and thirty', () => {
+  expect(britishConversion(1230)).toBe('twelve hundred and thirty');
+})
+
+test('1230 === one thousand two hundred and thirty', () => {
+  expect(convertNumber(1230)).toBe('one thousand two hundred and thirty');
+})
+
 test('2001 === two thousand and one', () => {
   expect(convertNumber(2001)).toBe('two thousand and one');
 })
