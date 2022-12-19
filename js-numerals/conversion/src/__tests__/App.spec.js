@@ -207,7 +207,7 @@ test("User submits invalid input empty string", () => {
   const button = screen.getByText("Convert");
   fireEvent.change(input, { target: { value: "" } });
   fireEvent.click(button);
-  const textUS = screen.getAllByText(/Invalid input/);
+  const textUS = screen.getAllByText(/Please enter a valid input/);
   expect(textUS.length).toBe(1);
 });
 
@@ -265,7 +265,7 @@ test("User submits invalid input 999999999.55", () => {
   const button = screen.getByText("Convert");
   fireEvent.change(input, { target: { value: "999999999.55" } });
   fireEvent.click(button);
-  const textUS = screen.getAllByText(/Invalid input/);
+  const textUS = screen.getAllByText(/Please enter a valid input/);
   expect(textUS.length).toBe(1);
 });
 
@@ -275,7 +275,7 @@ test("User submits invalid input -999999999.55", () => {
   const button = screen.getByText("Convert");
   fireEvent.change(input, { target: { value: "-999999999.55" } });
   fireEvent.click(button);
-  const textUS = screen.getAllByText(/Invalid input/);
+  const textUS = screen.getAllByText(/Please enter a valid input/);
   expect(textUS.length).toBe(1);
 });
 
@@ -285,7 +285,7 @@ test("User submits invalid input 12345678999", () => {
   const button = screen.getByText("Convert");
   fireEvent.change(input, { target: { value: "12345678999" } });
   fireEvent.click(button);
-  const textUS = screen.getAllByText(/Invalid input/);
+  const textUS = screen.getAllByText(/Please enter a valid input/);
   expect(textUS.length).toBe(1);
 });
 

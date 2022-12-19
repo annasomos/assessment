@@ -3,7 +3,7 @@ import { convertNumber, britishConversion } from "../utils/conversion";
 
 const ConvertedNumber = ({ number }) => {
   const converted = useMemo(() => {
-    return number || number === 0 ? convertNumber(number) : 'Invalid input';
+    return number || number === 0 ? convertNumber(number) : 'Please enter a valid input';
   }, [number]);
 
   const britishConverted = useMemo(() => {
