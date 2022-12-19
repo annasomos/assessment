@@ -22,3 +22,7 @@ test('2001 === two thousand and one', () => {
   expect(convertNumber(2001)).toBe('two thousand and one');
 })
 
+
+test('17999 === seventeen thousand nine hundred and ninety-nine', () => {
+  expect(convertNumber(17999)).toBe('seventeen thousand nine hundred and ninety-nine');
+})
