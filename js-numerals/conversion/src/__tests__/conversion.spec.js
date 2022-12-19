@@ -1,4 +1,4 @@
-import { convertNumber, britishConversion } from "../conversion";
+import { convertNumber, britishConversion } from "../utils/conversion";
 
 test("7 === seven", () => {
   expect(convertNumber(7)).toBe("seven");

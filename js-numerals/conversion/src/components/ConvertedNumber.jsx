@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { convertNumber, britishConversion } from "./conversion";
+import { convertNumber, britishConversion } from "../utils/conversion";
 
 const ConvertedNumber = ({ number }) => {
   const converted = useMemo(() => {
