@@ -80,3 +80,11 @@ test('-1300420 === negative one million three hundred thousand four hundred and 
 test('0 === zero', () => {
   expect(convertNumber(0)).toBe('zero');
 })
+
+test('999999999 === nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine', () => {
+  expect(convertNumber(999999999)).toBe('nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine');
+})
+
+test('-999999999 === negative nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine', () => {
+  expect(convertNumber(-999999999)).toBe('negative nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine');
+})

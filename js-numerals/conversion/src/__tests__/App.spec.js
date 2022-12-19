@@ -193,3 +193,24 @@ test('User submits empty string', () => {
   const textUS = screen.getAllByText(/Invalid input/);
   expect(textUS.length).toBe(1);
 })
+
+test('User submits 999999999', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '999999999'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine/);
+  expect(textUS.length).toBe(1);
+})
+
+test('User submits -999999999', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '-999999999'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/negative nine hundred and ninety-nine million nine hundred and ninety-nine thousand nine hundred and ninety-nine/);
+  expect(textUS.length).toBe(1);
+})
+
