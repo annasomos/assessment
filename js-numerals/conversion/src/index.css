@@ -25,17 +25,16 @@ code {
 }
 
 .container{
-  opacity: 0.9;
+  opacity: 0.8;
   background-color: #ffaa00;
   align-content: center;
   padding: 3em;
   margin-top: 10%;
   justify-content: center;
-  display:-ms-inline-grid;
   margin: auto;
   width: 40rem;
   text-align: center;
-  min-height: 5rem;
+  min-height: 10rem;
   border-radius: 10px;
 }
 
@@ -46,13 +45,11 @@ code {
 }
 
 .result{
-  position: relative;
   text-align: center;
   margin: auto;
 }
 
 .input{
-  position: relative;
   text-align: center;
   margin: auto;
 }
@@ -60,16 +57,24 @@ code {
 input{
   width: 15rem;
   height: 2rem;
-  background-color: #ffaa00;
+  background-color: white;
+  opacity: 0.5;
   color: black;
   border-radius: 0.5rem;
   text-align: center;
   border:0;
 }
 
+button {
+  background-color: black;
+  color: #ffaa00;
+  border: 0;
+  border-radius: 0.5rem;
+  height: 2rem;
+}
+
 ::placeholder {
   color: black;
-  opacity: 1;
 }
 
 input:focus{
