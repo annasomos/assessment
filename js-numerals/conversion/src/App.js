@@ -10,7 +10,9 @@ function App() {
     const numericValue = Math.round(Number(inputValue));
 
     if (inputValue) {
-      (numericValue >= -999999999 && numericValue <= 999999999) ? setNumber(numericValue) : setNumber();
+      Math.abs(numericValue) <= 999999999
+        ? setNumber(numericValue)
+        : setNumber();
     } else {
       setNumber();
     }
@@ -28,7 +30,7 @@ function App() {
       </div>
       <div className="container">
         <form className="input">
-          <input type="number" id="number" placeholder="Enter a number"></input>{" "}
+          <input type="number" id="number" placeholder="Enter a number"></input>
           <button type="submit" onClick={handleNumberSubmit}>
             Convert
           </button>

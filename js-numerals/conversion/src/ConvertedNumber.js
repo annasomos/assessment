@@ -3,7 +3,7 @@ import { convertNumber, britishConversion } from "./conversion";
 
 const ConvertedNumber = ({ number }) => {
   const converted = useMemo(() => {
-    return number || number === 0 ? convertNumber(number) : number;
+    return number || number === 0 ? convertNumber(number) : 'Invalid input';
   }, [number]);
 
   const britishConverted = useMemo(() => {
@@ -20,11 +20,11 @@ const ConvertedNumber = ({ number }) => {
   return (
     <>
       <div className="result">
-        Your number converted to English words is: {converted}
+        Your number converted to English words is: <strong>{converted}</strong>
       </div>
       {isBritishNeeded ? (
         <div className="result">
-          ...or as the British would say: {britishConverted}
+          ...or as the British would say: <strong>{britishConverted}</strong>
         </div>
       ) : (
         ""
