@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState } from "react";
 import ConvertedNumber from "./ConvertedNumber";
 
@@ -17,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="container">
       <input
         type="number"
         className="input"
@@ -25,6 +25,7 @@ function App() {
         onChange={handleNumberInputChange}
       ></input>
       <ConvertedNumber number={number} />
+      </div>
     </div>
   );
 }

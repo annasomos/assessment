@@ -10,10 +10,17 @@ const ConvertedNumber = ({number}) => {
     return number ? britishConversion(number): number;
   }, [number])
 
+  const isBritishNeeded = useMemo(() => {
+    if(number > 1000 && number < 2000){
+      return true;
+    }
+    return false;
+  }, [number])
+
   return (
     <>
-      <div>Your number converted to English words is: {converted}</div>
-      <div>As the British would say: {britishConverted}</div>
+      <div className="result">Your number converted to English words is: {converted}</div>
+      {isBritishNeeded ? <div className="result">...or as the British would say: {britishConverted}</div> : ''}
     </>    
   )
 }
