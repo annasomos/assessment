@@ -34,3 +34,7 @@ test('100001 === one hundred thousand and one', () => {
 test('342251  === three hundred and forty-two thousand two hundred and fifty-one', () => {
   expect(convertNumber(342251)).toBe('three hundred and forty-two thousand two hundred and fifty-one');
 })
+
+test('1300420 === one million three hundred thousand four hundred and twenty', () => {
+  expect(convertNumber(1300420)).toBe('one million three hundred thousand four hundred and twenty');
+})

@@ -81,3 +81,13 @@ test('User submits 342251', () => {
   expect(textUS.length).toBe(1);
 })
 
+
+test('User submits 1300420', () => {
+  render(<App/>)
+  const input = screen.getByPlaceholderText("Enter a number");
+  const button = screen.getByText('Convert');
+  fireEvent.change(input, {target: {value: '1300420'}});
+  fireEvent.click(button);
+  const textUS = screen.getAllByText(/one million three hundred thousand four hundred and twenty/);
+  expect(textUS.length).toBe(1);
+})
