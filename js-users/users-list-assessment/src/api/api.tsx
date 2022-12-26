@@ -52,7 +52,7 @@ export const api = {
   },
 
   async updateStatusById(
-    id: string,
+    id: number,
     statusUpdate: statusUpdate
   ) {
     await fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`, {
