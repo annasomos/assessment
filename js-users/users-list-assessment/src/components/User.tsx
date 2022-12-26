@@ -38,7 +38,7 @@ const User: React.FC<UserProps> = ({
           <h2 className="card__title">
             {first_name} {last_name} ({created_at})
           </h2> </>) : (<>
-            <button className="card__inactive" onClick={() => updateStatus(id)}>
+            <button className="card__locked" onClick={() => updateStatus(id)}>
             <i className="fas fa-lock-open"></i>
             </button>
           <del><h2 className="card__title">

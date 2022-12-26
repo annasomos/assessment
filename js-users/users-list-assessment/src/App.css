@@ -159,7 +159,8 @@ body {
 }
 
 .card__link,
-.card__exit,
+.card__active,
+.card__locked,
 .card__icon {
   position: relative;
   text-decoration: none;
@@ -181,7 +182,8 @@ body {
   width: 100%;
 }
 
-.card__exit {
+.card__active,
+.card__locked {
   grid-row: 1/2;
   justify-self: end;
 }
