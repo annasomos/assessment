@@ -14,7 +14,7 @@ const Router = () => {
         <Route path="/edit/:id" element={<EditUser/>} />
       </Route>
     </Routes>
-  );
+);
 };
 
 export default Router;
