@@ -27,7 +27,7 @@ const User: React.FC<UserProps> = ({
   }
 
   return (
-        <div className="card card-1">
+        <div className="card card-user">
           <div className="card__icon">
             <i className="fas fa-user-circle"></i>
           </div>
