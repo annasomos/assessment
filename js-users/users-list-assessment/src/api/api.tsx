@@ -52,7 +52,7 @@ export const api = {
   },
 
   async updateStatusById(
-    id: number,
+    id: string,
     statusUpdate: statusUpdate
   ) {
     await fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`, {
@@ -62,5 +62,18 @@ export const api = {
       },
       body: JSON.stringify(statusUpdate),
     });
+  },
+
+  async updateUserById(id: string, updatedUser: updatedUser) {
+    await fetch(
+      `https://assessment-users-backend.herokuapp.com/users/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUser),
+      }
+    );
   },
 };
