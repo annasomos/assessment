@@ -17,7 +17,7 @@ const UserPagination: React.FC<PaginationProps> = ({
 
   const [minPagesShown, setMinPagesShown] = useState<number>(0);
 
-  const [maxPagesShown, setMaxPagesShown] = useState<number>(3);
+  const [maxPagesShown, setMaxPagesShown] = useState<number>(5);
 
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
 
@@ -104,17 +104,7 @@ const UserPagination: React.FC<PaginationProps> = ({
       Previous Page
     </button>
     <div className="flex flex-row justify-center">
-      {pageNumbers?.map((pageNumber) => {
-        if (pageNumber <= maxPagesShown && pageNumber > minPagesShown) {
-          return (
-            <li
-              key={pageNumber}
-              onClick={(event) => handlePageNumberClick(event)}>
-              {pageNumber}
-            </li>
-          );
-        }
-      })}
+      {currentPageNumber} of {numberOfPages}
     </div>
 
     <button

@@ -1,6 +1,6 @@
 import { UserModel } from "../model/UserModel";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../api/api";
 
 interface UserProps {
@@ -31,7 +31,7 @@ const User: React.FC<UserProps> = ({
           <div className="card__icon">
             <i className="fas fa-user-circle"></i>
           </div>
-            {status==="active" ? (<>
+            {userStatus==="active" ? (<>
               <button className="card__active" onClick={() => updateStatus(id)}>
             <i className="fas fa-lock"></i>
             </button>

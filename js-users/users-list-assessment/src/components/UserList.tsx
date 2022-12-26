@@ -17,7 +17,7 @@ const UserList = () => {
   }, []);
 
   return (
-    <div className="max-w-[65%] m-auto ">
+    <div>
         <UserPagination users={allUsers} />
     </div>
   );
