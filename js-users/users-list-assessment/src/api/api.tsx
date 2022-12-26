@@ -50,4 +50,17 @@ export const api = {
     );
     return await user.json();
   },
+
+  async updateStatusById(
+    id: number,
+    statusUpdate: statusUpdate
+  ) {
+    await fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(statusUpdate),
+    });
+  },
 };
