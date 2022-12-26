@@ -5,7 +5,7 @@ import Navbar from './view/Navbar'
 function App() {
 
   return (
-    <div className="App">
+    <div>
       <Navbar />
       <Outlet />
     </div>

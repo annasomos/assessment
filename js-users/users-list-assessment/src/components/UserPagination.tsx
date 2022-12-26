@@ -76,6 +76,7 @@ const UserPagination: React.FC<PaginationProps> = ({
   useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), []);
 
   return (
+<div className="">
     <div className="main-container">
       <div className="heading">
         <h1 className="heading__title">All Users</h1>
@@ -95,6 +96,35 @@ const UserPagination: React.FC<PaginationProps> = ({
         ))}
       </div>
     </div>
+    <div className="flex flex-col md:flex-row justify-center mb-2 ">
+    <button
+      disabled={currentPageNumber === 1}
+      onClick={() => handlePreviousButtonClick()}
+    >
+      Previous Page
+    </button>
+    <div className="flex flex-row justify-center">
+      {pageNumbers?.map((pageNumber) => {
+        if (pageNumber <= maxPagesShown && pageNumber > minPagesShown) {
+          return (
+            <li
+              key={pageNumber}
+              onClick={(event) => handlePageNumberClick(event)}>
+              {pageNumber}
+            </li>
+          );
+        }
+      })}
+    </div>
+
+    <button
+      disabled={currentPageNumber === numberOfPages}
+      onClick={() => handleNextButtonClick()}
+    >
+      Next Page
+    </button>
+  </div>
+  </div>
   );
 };
 
