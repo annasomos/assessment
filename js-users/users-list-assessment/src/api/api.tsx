@@ -27,6 +27,7 @@ export const api = {
     );
     return await users.json();
   },
+
   async addNewUser(newUser: newUser) {
     await fetch("https://assessment-users-backend.herokuapp.com/users", {
       method: "POST",
@@ -35,5 +36,18 @@ export const api = {
       },
       body: JSON.stringify(newUser),
     });
+  },
+
+  async getUserById(id: string) {
+    const user = await fetch(
+      `https://assessment-users-backend.herokuapp.com/users/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return await user.json();
   },
 };
