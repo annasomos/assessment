@@ -65,6 +65,15 @@ const UserPagination: React.FC<PaginationProps> = ({
     setMaxPagesShown((currentNumber) => currentNumber + increment);
   }
 
+  function generatePageNumberArray(maxNumberOfPages: number){
+    let pageNumbers = new Array();
+    for(let number = 1; number <= maxNumberOfPages; number++){
+        pageNumbers = [...pageNumbers, number]
+    }
+    return pageNumbers;
+  }
+
+  useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), []);
 
   return <></>;
 };
