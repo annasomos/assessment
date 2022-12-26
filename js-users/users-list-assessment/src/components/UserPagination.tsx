@@ -42,6 +42,29 @@ const UserPagination: React.FC<PaginationProps> = ({
     setMaxPagesShown((currentNumber) => currentNumber + 1);
   }
 
+  function handlePageNumberClick(event: any) {
+    const clickedPageNumber = parseInt(event.target.innerHTML);
+    setCurrentPageNumber(clickedPageNumber);
+    const pageNumber: number =
+      currentPageNumber > clickedPageNumber
+        ? currentPageNumber - clickedPageNumber
+        : clickedPageNumber - currentPageNumber;
+
+    clickedPageNumber > currentPageNumber
+      ? increaseMinAndMaxPagesShown(pageNumber)
+      : decreaseMinAndMaxPagesShown(pageNumber);
+  }
+
+  function decreaseMinAndMaxPagesShown(decrement: number) {
+    setMinPagesShown((currentNumber) => currentNumber - decrement);
+    setMaxPagesShown((currentNumber) => currentNumber - decrement);
+  }
+
+  function increaseMinAndMaxPagesShown(increment: number) {
+    setMinPagesShown((currentNumber) => currentNumber + increment);
+    setMaxPagesShown((currentNumber) => currentNumber + increment);
+  }
+
 
   return <></>;
 };
