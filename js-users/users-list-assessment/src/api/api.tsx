@@ -12,3 +12,19 @@ type updatedUser = {
 type statusUpdate = {
   status: string;
 };
+
+
+export const api = {
+  async getAllUsers() {
+    const users = await fetch(
+      "https://assessment-users-backend.herokuapp.com/users",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return await users.json();
+  },
+};
