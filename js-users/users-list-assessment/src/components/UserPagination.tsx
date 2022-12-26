@@ -1,5 +1,6 @@
 import { UserModel } from "../model/UserModel";
 import { useState, useEffect } from "react";
+import User from "../components/User";
 
 interface PaginationProps {
   users: UserModel[];
@@ -8,7 +9,6 @@ interface PaginationProps {
 const UserPagination: React.FC<PaginationProps> = ({
   users,
 }: PaginationProps) => {
-
   const shownUsersPerPage: number = 10;
 
   const numberOfPages: number = Math.ceil(users.length / shownUsersPerPage);
@@ -65,17 +65,37 @@ const UserPagination: React.FC<PaginationProps> = ({
     setMaxPagesShown((currentNumber) => currentNumber + increment);
   }
 
-  function generatePageNumberArray(maxNumberOfPages: number){
+  function generatePageNumberArray(maxNumberOfPages: number) {
     let pageNumbers = new Array();
-    for(let number = 1; number <= maxNumberOfPages; number++){
-        pageNumbers = [...pageNumbers, number]
+    for (let number = 1; number <= maxNumberOfPages; number++) {
+      pageNumbers = [...pageNumbers, number];
     }
     return pageNumbers;
   }
 
   useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), []);
 
-  return <></>;
+  return (
+    <div className="main-container">
+      <div className="heading">
+        <h1 className="heading__title">All Users</h1>
+        <p className="heading__credits">
+          <a
+            className="heading__link"
+            target="_blank"
+            href="https://dribbble.com/sl"
+          >
+            From Digital Natives - Second Coding Assessment
+          </a>
+        </p>
+      </div>
+      <div className="cards">
+      {currentPageUsers?.map((user) => (
+          <User key={user.id} user={user} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default UserPagination;
