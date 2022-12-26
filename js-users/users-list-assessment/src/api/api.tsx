@@ -8,3 +8,7 @@ type updatedUser = {
   first_name: string;
   last_name: string;
 };
+
+type statusUpdate = {
+  status: string;
+};
