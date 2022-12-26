@@ -1,8 +1,8 @@
 import { Routes, Route} from 'react-router-dom';
-import App from "./App";
-import UsersList from "./UsersList"
-import AddNewUser from "./AddNewUser";
-import EditUser from "./EditUser"
+import App from "../App";
+import UsersList from "../components/UsersList"
+import AddNewUser from "../components/AddNewUser";
+import EditUser from "../components/EditUser"
 
 
 const Router = () => {
