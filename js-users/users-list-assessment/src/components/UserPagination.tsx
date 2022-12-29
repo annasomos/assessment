@@ -80,8 +80,6 @@ const UserPagination: React.FC<PaginationProps> = ({
     <div className="main-container">
       <div className="heading">
         <h1 className="heading__title">All Users</h1>
-        <p className="heading__credits">
-        </p>
       </div>
       <div className="cards">
       {currentPageUsers?.map((user) => (

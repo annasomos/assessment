@@ -55,7 +55,6 @@ button:hover {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -84,7 +83,8 @@ button:hover {
   height: 60px;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-self: center;
+  text-align: center;
   position: relative;
   padding: 0.5rem 0rem;
   background-color: #fff;
@@ -95,8 +95,6 @@ button:hover {
 .navigation-menu {
   margin-left: auto;
   align-items: center;
-  text-align: center;
-
 }
 
 .navigation-menu ul {
@@ -146,6 +144,8 @@ body {
 
 .main-container {
   padding: 10px;
+  box-sizing: border-box;
+  justify-content: center;
 }
 
 .heading {
@@ -154,13 +154,7 @@ body {
 
 .heading__title {
   font-weight: 400;
-}
-
-.heading__credits {
-  margin: 10px 0px;
-  color: #888888;
-  font-size: 25px;
-  transition: all 0.5s;
+  width: auto;
 }
 
 .heading__link {
@@ -172,15 +166,17 @@ body {
 }
 
 .cards {
-  flex-wrap: wrap;
+  box-sizing: border-box;
   justify-content: space-between;
-  position: relative;}
+  width: 100%;
+  position: relative;
+}
 
 .card {
   margin: 20px;
-  padding:20px;
-  width: auto;
-  grid-template-rows: 20px 50px 1fr 50px;
+  padding: 20px;
+  width: 400px;
+  min-height: 150px;
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
@@ -199,7 +195,6 @@ body {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.9);
   margin: 5px;
-
 }
 
 .card__edit::after {
@@ -213,44 +208,42 @@ body {
   transition: all 0.5s;
 }
 
-
 .card__active,
 .card__locked {
-  height:max-content;
-  width:max-content;
+  height: max-content;
+  width: 110px;
 }
 
 .card__edit {
-  height:max-content;
-  width:max-content;
+  height: max-content;
+  width: max-content;
 }
 
 .card__title {
-  justify-self:center;
+  justify-self: center;
   color: #ffffff;
+  height: auto;
+  margin-bottom: 5px;
 }
 
 .card-user {
   background: radial-gradient(#76b2fe, #b69efe);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .card {
     justify-content: center;
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.2s;
-    font-size: 15px;
-    box-sizing:border-box;
+    font-size: 10px;
+    box-sizing: border-box;
     width: 100%;
   }
-  
+
   #root {
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
   }
 }
-
-
-

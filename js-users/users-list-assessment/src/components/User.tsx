@@ -30,12 +30,12 @@ const User: React.FC<UserProps> = ({
     <div className="card card-user">
       {userStatus === "active" ? (
         <h2 className="card__title">
-          {first_name} {last_name} ({created_at})
+          {first_name} {last_name} <p>({created_at})</p>
         </h2>
       ) : (
         <del>
           <h2 className="card__title">
-            {first_name} {last_name} ({created_at})
+            {first_name} {last_name} <p>{created_at}</p>
           </h2>
         </del>
       )}{" "}
