@@ -82,10 +82,9 @@ button:hover {
 .navigation {
   height: 60px;
   width: 100%;
-  display: flex;
   align-self: center;
   text-align: center;
-  position: relative;
+  position: fixed;
   padding: 0.5rem 0rem;
   background-color: #fff;
   color: black;
@@ -95,21 +94,33 @@ button:hover {
 .navigation-menu {
   margin-left: auto;
   align-items: center;
+  position: relative;
 }
 
 .navigation-menu ul {
-  display: flex;
+  list-style-type: none;
+  height: 4rem;
+  margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .navigation-menu li {
   list-style-type: none;
   margin: 0 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .navigation-menu li a {
   text-decoration: none;
   display: block;
   width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .hamburger {
@@ -242,7 +253,6 @@ body {
   }
 
   #root {
-    max-width: 400px;
     margin: 0 auto;
     text-align: center;
   }

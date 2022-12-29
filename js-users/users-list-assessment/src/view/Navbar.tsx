@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav>
+    <header>
       <button className="hamburger">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,11 +24,11 @@ const Navbar = () => {
           <Link to={"/"}>Home</Link>
           </li>
           <li>
-          <Link to={"/new"}>Add new user</Link>
+          <Link to={"/new"}>Add User</Link>
           </li>
         </ul>
       </div>
-    </nav>
+    </header>
   )
 }
 

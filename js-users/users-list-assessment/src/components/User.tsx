@@ -35,7 +35,7 @@ const User: React.FC<UserProps> = ({
       ) : (
         <del>
           <h2 className="card__title">
-            {first_name} {last_name} <p>{created_at}</p>
+            {first_name} {last_name} <p>({created_at})</p>
           </h2>
         </del>
       )}{" "}
