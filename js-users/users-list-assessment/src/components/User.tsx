@@ -43,8 +43,8 @@ const User: React.FC<UserProps> = ({
           </h2></del>
           </>)}
           <p className="card__apply">
-            <button className="card__link" onClick={() => navigate(`/edit/${id}`)}>
-              Edit User <i className="fas fa-pencil-alt"></i>
+            <button onClick={() => navigate(`/edit/${id}`)}>
+              Edit <i className="fas fa-pencil-alt"></i>
             </button>
           </p>
         </div>

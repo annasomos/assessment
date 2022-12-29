@@ -162,7 +162,7 @@ body {
 }
 
 .main-container {
-  padding: 30px;
+  padding: 10px;
 }
 
 /* HEADING */
@@ -222,7 +222,7 @@ body {
 .card__icon {
   position: relative;
   text-decoration: none;
-  margin: 10px;
+  margin: 20px;
   padding: 10px;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -261,7 +261,7 @@ body {
   color: #ffffff;
 }
 
-.card__apply {
+.card__apply{
   justify-self: flex-start;
   grid-row: 4/4;
 }
@@ -272,11 +272,9 @@ body {
 
 /* RESPONSIVE */
 
-@media (max-width: 1600px) {
-  .cards {
+@media (max-width: 1000px) {
+  .card {
     justify-content: center;
-    margin: 20px;
-    padding: 20px;
     width: 100%;
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
