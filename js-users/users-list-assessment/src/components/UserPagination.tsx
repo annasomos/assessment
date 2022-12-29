@@ -81,13 +81,6 @@ const UserPagination: React.FC<PaginationProps> = ({
       <div className="heading">
         <h1 className="heading__title">All Users</h1>
         <p className="heading__credits">
-          <a
-            className="heading__link"
-            target="_blank"
-            href="https://dribbble.com/sl"
-          >
-            From Digital Natives - Second Coding Assessment
-          </a>
         </p>
       </div>
       <div className="cards">
@@ -96,14 +89,14 @@ const UserPagination: React.FC<PaginationProps> = ({
         ))}
       </div>
     </div>
-    <div className="flex flex-col md:flex-row justify-center mb-2 ">
+    <div>
     <button
       disabled={currentPageNumber === 1}
       onClick={() => handlePreviousButtonClick()}
     >
       Previous Page
     </button>
-    <div className="flex flex-row justify-center">
+    <div>
       {currentPageNumber} of {numberOfPages}
     </div>
 

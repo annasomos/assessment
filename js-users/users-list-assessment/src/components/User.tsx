@@ -28,18 +28,15 @@ const User: React.FC<UserProps> = ({
 
   return (
         <div className="card card-user">
-          <div className="card__icon">
-            <i className="fas fa-user-circle"></i>
-          </div>
             {userStatus==="active" ? (<>
               <button className="card__active" onClick={() => updateStatus(id)}>
-            <i className="fas fa-lock"></i>
+            <i className="bi bi-lock"></i>
             </button>
           <h2 className="card__title">
             {first_name} {last_name} ({created_at})
           </h2> </>) : (<>
             <button className="card__locked" onClick={() => updateStatus(id)}>
-            <i className="fas fa-lock-open"></i>
+            <i className="bi bi-unlock"></i>
             </button>
           <del><h2 className="card__title">
             {first_name} {last_name} ({created_at})
