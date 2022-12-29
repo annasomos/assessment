@@ -28,6 +28,9 @@ const User: React.FC<UserProps> = ({
 
   return (
         <div className="card card-user">
+                      <button className="card__edit" onClick={() => navigate(`/edit/${id}`)}>
+              Edit <i className="fas fa-pencil-alt"></i>
+            </button>
             {userStatus==="active" ? (<>
               <button className="card__active" onClick={() => updateStatus(id)}>
             <i className="bi bi-lock"></i>
@@ -38,15 +41,10 @@ const User: React.FC<UserProps> = ({
             <button className="card__locked" onClick={() => updateStatus(id)}>
             <i className="bi bi-unlock"></i>
             </button>
-          <del><h2 className="card__title">
+          <del><h2 className="card__edit">
             {first_name} {last_name} ({created_at})
           </h2></del>
           </>)}
-          <p className="card__apply">
-            <button onClick={() => navigate(`/edit/${id}`)}>
-              Edit <i className="fas fa-pencil-alt"></i>
-            </button>
-          </p>
         </div>
   );
 };

@@ -76,20 +76,6 @@ button:hover {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-
-
 .read-the-docs {
   color: #888;
 }
@@ -106,14 +92,10 @@ button:hover {
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
 }
 
-.brand-name {
-  text-decoration: none;
-  color: black;
-  font-size: 1.3rem;
-  margin-left: 1rem;
-}
 .navigation-menu {
   margin-left: auto;
+  align-items: center;
+
 }
 
 .navigation-menu ul {
@@ -165,8 +147,6 @@ body {
   padding: 10px;
 }
 
-/* HEADING */
-
 .heading {
   text-align: center;
 }
@@ -189,8 +169,6 @@ body {
 .heading__credits .heading__link {
   color: inherit;
 }
-
-/* CARDS */
 
 .cards {
   display: flex;
@@ -219,6 +197,7 @@ body {
 .card__link,
 .card__active,
 .card__locked,
+.card__edit,
 .card__icon {
   position: relative;
   text-decoration: none;
@@ -227,7 +206,7 @@ body {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.card__link::after {
+.card__edit::after {
   position: absolute;
   top: 25px;
   left: 0;
@@ -238,9 +217,6 @@ body {
   transition: all 0.5s;
 }
 
-.card__link:hover::after {
-  width: 100%;
-}
 
 .card__active,
 .card__locked {
@@ -248,29 +224,23 @@ body {
   justify-self: end;
 }
 
-.card__icon {
-  font-size: 40px;
-  color: white;
-}
-
 .card__title {
   justify-self:center;
   margin: 20px;
-  padding: 20px;
+  padding: 10px;
   font-weight: 400;
   color: #ffffff;
 }
 
-.card__apply{
+.card__edit{
+  height:max-content;
   justify-self: flex-start;
-  grid-row: 4/4;
+  display:inline-block;
 }
 
 .card-user {
   background: radial-gradient(#76b2fe, #b69efe);
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 1000px) {
   .card {
@@ -280,6 +250,12 @@ body {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.2s;
     font-size: 15px;
+  }
+  
+  #root {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 

@@ -3,9 +3,6 @@ import {Link} from "react-router-dom";
 const Navbar = () => {
   return (
     <nav>
-            <a href="/" className="brand-name">
-        Dina Assessment Users List Menu
-      </a>
       <button className="hamburger">
         <svg
           xmlns="http://www.w3.org/2000/svg"
