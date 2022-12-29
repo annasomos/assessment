@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1a1a1a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,7 +31,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1a1a1a;
 }
 
 h1 {
@@ -95,6 +95,7 @@ button:hover {
 .navigation-menu {
   margin-left: auto;
   align-items: center;
+  text-align: center;
 
 }
 
@@ -171,17 +172,14 @@ body {
 }
 
 .cards {
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
+  position: relative;}
 
 .card {
   margin: 20px;
-  padding: 20px;
-  width: 500px;
-  min-height: 200px;
-  display: grid;
+  padding:20px;
+  width: auto;
   grid-template-rows: 20px 50px 1fr 50px;
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
@@ -194,16 +192,14 @@ body {
   transform: scale(1.01);
 }
 
-.card__link,
 .card__active,
 .card__locked,
-.card__edit,
-.card__icon {
+.card__edit {
   position: relative;
   text-decoration: none;
-  margin: 20px;
-  padding: 10px;
   color: rgba(255, 255, 255, 0.9);
+  margin: 5px;
+
 }
 
 .card__edit::after {
@@ -221,21 +217,17 @@ body {
 .card__active,
 .card__locked {
   height:max-content;
-  justify-self: end;
+  width:max-content;
+}
+
+.card__edit {
+  height:max-content;
+  width:max-content;
 }
 
 .card__title {
   justify-self:center;
-  margin: 20px;
-  padding: 10px;
-  font-weight: 400;
   color: #ffffff;
-}
-
-.card__edit{
-  height:max-content;
-  justify-self: flex-start;
-  display:inline-block;
 }
 
 .card-user {
@@ -245,11 +237,12 @@ body {
 @media (max-width: 1000px) {
   .card {
     justify-content: center;
-    width: 100%;
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.2s;
     font-size: 15px;
+    box-sizing:border-box;
+    width: 100%;
   }
   
   #root {

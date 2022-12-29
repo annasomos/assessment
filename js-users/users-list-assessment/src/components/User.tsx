@@ -27,25 +27,33 @@ const User: React.FC<UserProps> = ({
   }
 
   return (
-        <div className="card card-user">
-                      <button className="card__edit" onClick={() => navigate(`/edit/${id}`)}>
-              Edit <i className="fas fa-pencil-alt"></i>
-            </button>
-            {userStatus==="active" ? (<>
-              <button className="card__active" onClick={() => updateStatus(id)}>
-            <i className="bi bi-lock"></i>
-            </button>
+    <div className="card card-user">
+      {userStatus === "active" ? (
+        <h2 className="card__title">
+          {first_name} {last_name} ({created_at})
+        </h2>
+      ) : (
+        <del>
           <h2 className="card__title">
             {first_name} {last_name} ({created_at})
-          </h2> </>) : (<>
-            <button className="card__locked" onClick={() => updateStatus(id)}>
-            <i className="bi bi-unlock"></i>
-            </button>
-          <del><h2 className="card__edit">
-            {first_name} {last_name} ({created_at})
-          </h2></del>
-          </>)}
-        </div>
+          </h2>
+        </del>
+      )}{" "}
+      {userStatus === "active" ? (
+        <button className="card__active" onClick={() => updateStatus(id)}>
+          <i className="bi bi-lock"></i>
+          Lock
+        </button>
+      ) : (
+        <button className="card__locked" onClick={() => updateStatus(id)}>
+          <i className="bi bi-unlock"></i>
+          Unlock
+        </button>
+      )}
+      <button className="card__edit" onClick={() => navigate(`/edit/${id}`)}>
+        Edit <i className="bi bi-pencil-square"></i>
+      </button>
+    </div>
   );
 };
 
