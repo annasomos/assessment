@@ -39,6 +39,7 @@ useEffect(() => {
   return (
     <div className="edit-form">
       <form>
+        <div className="edit-row">
       <label>
               First Name:
       </label>
@@ -48,7 +49,8 @@ useEffect(() => {
               placeholder="First Name"
               name="first_name"
               defaultValue={user?.first_name}
-            />
+            /></div>
+            <div className="edit-row">
             <label>
               Last Name:
       </label>
@@ -58,7 +60,10 @@ useEffect(() => {
               placeholder="Last Name"
               name="last_name"
               defaultValue={user?.last_name}
-            />
+            /></div>
+            <button type="submit">
+              Submit
+            </button>
       </form>
     </div>
   )
