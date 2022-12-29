@@ -15,7 +15,7 @@ export const EditUser = () => {
 
   const params = useParams();
 
-  const[userId, setUserId] = useState<string>(params.id as string);
+  const [userId, setUserId] = useState<string>(params.id as string);
 
   type updatedUser = {
     first_name: string;
@@ -37,7 +37,7 @@ export const EditUser = () => {
     });
   }, [params.id]);
 
-  const handleOnSubmit = async(event: any) => {
+  const handleOnSubmit = async (event: any) => {
     event.preventDefault();
     const updatedUser: updatedUser = {
       first_name: event.target["first_name"].value,
@@ -45,11 +45,16 @@ export const EditUser = () => {
     };
     await api.updateUserById(userId, updatedUser);
     navigateTo("../");
-  }
+  };
 
   return (
     <div className="edit-container">
-      {isUserFound ? (<UserForm user={user} handleOnSubmit={handleOnSubmit}/>
+      <div className="heading">
+        <h1 className="heading__title">Edit User {user?.id}</h1>
+        <p className="heading__credits"></p>
+      </div>
+      {isUserFound ? (
+        <UserForm user={user} handleOnSubmit={handleOnSubmit} />
       ) : (
         <div className="error-container">{errorMessage}</div>
       )}
