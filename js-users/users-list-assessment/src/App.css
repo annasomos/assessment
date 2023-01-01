@@ -30,7 +30,6 @@ h1 {
 }
 
 body {
-  width: 100%;
   margin: 0;
   display: flex;
   place-items: center;
@@ -76,7 +75,6 @@ button:hover {
 
 #root {
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -91,18 +89,11 @@ button:hover {
 }
 
 .card {
-  margin: 20px;
-  padding: 20px;
   color: white;
   font-size: auto;
 }
 
-.cards {
-  width: 100%;
-}
-
-
-
 .page-select {
   color: black;
 }
+
