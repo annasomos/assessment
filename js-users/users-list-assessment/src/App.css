@@ -91,3 +91,6 @@ button:hover {
   color: black;
 }
 
+.navbar-toggler {
+  background-color: #f9f9f9 !important;
+}
