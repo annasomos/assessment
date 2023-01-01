@@ -7,7 +7,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #1a1a1a;
-  width: 100%;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,6 +30,7 @@ h1 {
 }
 
 body {
+  width: 100%;
   margin: 0;
   display: flex;
   place-items: center;

@@ -17,7 +17,7 @@ const UserList = () => {
   }, []);
 
   return (
-    <div className="cards">
+    <div>
         <UserPagination users={allUsers} />
     </div>
   );

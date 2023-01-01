@@ -1,12 +1,11 @@
-import {useNavigate, Link} from "react-router-dom";
-import React, { useState } from 'react';
+import {Link} from "react-router-dom";
+import { useState } from 'react';
 import {
   MDBContainer,
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarToggler,
   MDBNavbarNav,
-  MDBNavbarItem,
   MDBNavbarLink,
   MDBIcon,
   MDBCollapse
@@ -14,8 +13,6 @@ import {
 
 const Navbar = () => {
   const [showNavSecond, setShowNavSecond] = useState(false);
-  const navigateTo = useNavigate();
-
   return (
     <MDBNavbar expand='lg' light bgColor='light'>
       <MDBContainer fluid>
