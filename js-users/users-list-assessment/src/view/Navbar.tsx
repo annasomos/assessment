@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import React, { useState } from 'react';
 import {
   MDBContainer,
@@ -14,6 +14,7 @@ import {
 
 const Navbar = () => {
   const [showNavSecond, setShowNavSecond] = useState(false);
+  const navigateTo = useNavigate();
 
   return (
     <MDBNavbar expand='lg' light bgColor='light'>
@@ -28,10 +29,11 @@ const Navbar = () => {
         </MDBNavbarToggler>
         <MDBCollapse navbar show={showNavSecond}>
           <MDBNavbarNav>
-            <MDBNavbarLink active aria-current='page' href='/'>
-              Home
+            <MDBNavbarLink active aria-current='page'><Link to="/">
+              Home</Link>
             </MDBNavbarLink>
-            <MDBNavbarLink href='/new'>Add New User</MDBNavbarLink>
+            <MDBNavbarLink><Link to="/new">
+            Add New User</Link></MDBNavbarLink>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

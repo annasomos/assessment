@@ -5,10 +5,8 @@ import {
   MDBBtn,
   MDBPagination,
   MDBPaginationItem,
-  MDBCard
-} from 'mdb-react-ui-kit';
-
-
+  MDBCard,
+} from "mdb-react-ui-kit";
 
 interface PaginationProps {
   users: UserModel[];
@@ -36,7 +34,6 @@ const UserPagination: React.FC<PaginationProps> = ({
 
   function handlePreviousButtonClick() {
     setCurrentPageNumber((currentPageNum) => currentPageNum - 1);
-    
   }
 
   function handleNextButtonClick() {
@@ -48,8 +45,7 @@ const UserPagination: React.FC<PaginationProps> = ({
     setCurrentPageNumber(clickedPageNumber);
   }
 
-
-  function generatePageNumberArray(maxNumberOfPages: number) : number[]{
+  function generatePageNumberArray(maxNumberOfPages: number): number[] {
     let pageNumbersShown = new Array();
     for (let number = 1; number <= maxNumberOfPages; number++) {
       pageNumbersShown = [...pageNumbersShown, number];
@@ -57,36 +53,45 @@ const UserPagination: React.FC<PaginationProps> = ({
     return pageNumbersShown;
   }
 
-  useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), [currentPageNumber]);
+  useEffect(
+    () => setPageNumbers(generatePageNumberArray(numberOfPages)),
+    [currentPageNumber]
+  );
 
-  return (<div className="container">
-    <h1 className="heading__title">Users</h1>
-    <MDBCard>
-      <div className="cards">
-      {currentPageUsers?.map((user) => (
-          <User key={user.id} user={user} />
-        ))}
+  return (
+    <div className="container">
+      <h1 className="heading__title">Users</h1>
+      <MDBCard>
+        <div className="cards">
+          {currentPageUsers?.map((user) => (
+            <User key={user.id} user={user} />
+          ))}
         </div>
-    <MDBPagination className='mb-0'>
-        <MDBPaginationItem>
-        <MDBBtn
-      disabled={currentPageNumber === 1}
-      onClick={() => handlePreviousButtonClick()}
-    >
-      Previous Page
-    </MDBBtn>
-        </MDBPaginationItem>
-        <MDBBtn
-      disabled={currentPageNumber === numberOfPages}
-      onClick={() => handleNextButtonClick()}
-    >
-      Next Page
-    </MDBBtn>
-      </MDBPagination>     <div className="page-select" id="page-selector">
-    <select onChange={handlePageNumberClick} value={currentPageNumber}>{generatePageNumberArray(numberOfPages).map((page) => {
-      return <option value={page}>{page}</option>
-    })}</select> of {numberOfPages}
-    </div></MDBCard>
+        <MDBPagination className="mb-0">
+          <MDBPaginationItem>
+            <MDBBtn
+              disabled={currentPageNumber === 1}
+              onClick={() => handlePreviousButtonClick()}
+            >
+              Previous Page
+            </MDBBtn>
+          </MDBPaginationItem>
+          <MDBBtn
+            disabled={currentPageNumber === numberOfPages}
+            onClick={() => handleNextButtonClick()}
+          >
+            Next Page
+          </MDBBtn>
+        </MDBPagination>
+        <div className="page-select" id="page-selector">
+          <select onChange={handlePageNumberClick} value={currentPageNumber}>
+            {generatePageNumberArray(numberOfPages).map((page) => {
+              return <option value={page}>{page}</option>;
+            })}
+          </select>
+          of {numberOfPages}
+        </div>
+      </MDBCard>
     </div>
   );
 };
