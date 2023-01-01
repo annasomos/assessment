@@ -66,14 +66,14 @@ const UserPagination: React.FC<PaginationProps> = ({
   }
 
   function generatePageNumberArray(maxNumberOfPages: number) {
-    let pageNumbers = new Array();
+    let pageNumbersShown = new Array();
     for (let number = 1; number <= maxNumberOfPages; number++) {
-      pageNumbers = [...pageNumbers, number];
+      pageNumbersShown = [...pageNumbersShown, number];
     }
-    return pageNumbers;
+    return pageNumbersShown;
   }
 
-  useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), []);
+  useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), [currentPageNumber]);
 
   return (
 <div className="">
@@ -94,10 +94,21 @@ const UserPagination: React.FC<PaginationProps> = ({
     >
       Previous Page
     </button>
-    <div>
-      {currentPageNumber} of {numberOfPages}
-    </div>
-
+    <div className="flex flex-row justify-center">
+          {pageNumbers?.map((pageNumber) => {
+            if (pageNumber <= maxPagesShown && pageNumber > minPagesShown) {
+              return (
+                <li
+                  key={pageNumber}
+                  onClick={(event) => handlePageNumberClick(event)}
+                  className="list-none mt-2 mr-8 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
+                >
+                  {pageNumber}
+                </li>
+              );
+            }
+          })}
+        </div>
     <button
       disabled={currentPageNumber === numberOfPages}
       onClick={() => handleNextButtonClick()}
