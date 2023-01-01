@@ -2,8 +2,13 @@ import { UserModel } from "../model/UserModel";
 import { useState, useEffect } from "react";
 import User from "../components/User";
 import {
-  MDBBtn
+  MDBBtn,
+  MDBPagination,
+  MDBPaginationItem,
+  MDBCard
 } from 'mdb-react-ui-kit';
+
+
 
 interface PaginationProps {
   users: UserModel[];
@@ -18,10 +23,6 @@ const UserPagination: React.FC<PaginationProps> = ({
 
   const [pageNumbers, setPageNumbers] = useState<number[]>();
 
-  const [minPagesShown, setMinPagesShown] = useState<number>(0);
-
-  const [maxPagesShown, setMaxPagesShown] = useState<number>(5);
-
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
 
   const [currentPageUsers, setCurrentPageUsers] = useState<UserModel[]>();
@@ -35,40 +36,20 @@ const UserPagination: React.FC<PaginationProps> = ({
 
   function handlePreviousButtonClick() {
     setCurrentPageNumber((currentPageNum) => currentPageNum - 1);
-    setMinPagesShown((currentNumber) => currentNumber - 1);
-    setMaxPagesShown((currentNumber) => currentNumber - 1);
+    
   }
 
   function handleNextButtonClick() {
     setCurrentPageNumber((currentPageNum) => currentPageNum + 1);
-    setMinPagesShown((currentNumber) => currentNumber + 1);
-    setMaxPagesShown((currentNumber) => currentNumber + 1);
   }
 
   function handlePageNumberClick(event: any) {
-    const clickedPageNumber = parseInt(event.target.innerHTML);
+    const clickedPageNumber = parseInt(event.target.value);
     setCurrentPageNumber(clickedPageNumber);
-    const pageNumber: number =
-      currentPageNumber > clickedPageNumber
-        ? currentPageNumber - clickedPageNumber
-        : clickedPageNumber - currentPageNumber;
-
-    clickedPageNumber > currentPageNumber
-      ? increaseMinAndMaxPagesShown(pageNumber)
-      : decreaseMinAndMaxPagesShown(pageNumber);
   }
 
-  function decreaseMinAndMaxPagesShown(decrement: number) {
-    setMinPagesShown((currentNumber) => currentNumber - decrement);
-    setMaxPagesShown((currentNumber) => currentNumber - decrement);
-  }
 
-  function increaseMinAndMaxPagesShown(increment: number) {
-    setMinPagesShown((currentNumber) => currentNumber + increment);
-    setMaxPagesShown((currentNumber) => currentNumber + increment);
-  }
-
-  function generatePageNumberArray(maxNumberOfPages: number) {
+  function generatePageNumberArray(maxNumberOfPages: number) : number[]{
     let pageNumbersShown = new Array();
     for (let number = 1; number <= maxNumberOfPages; number++) {
       pageNumbersShown = [...pageNumbersShown, number];
@@ -79,24 +60,33 @@ const UserPagination: React.FC<PaginationProps> = ({
   useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), [currentPageNumber]);
 
   return (<div className="container">
-    <h1 className="heading__title">All Users</h1>
+    <h1 className="heading__title">Users</h1>
+    <MDBCard>
       <div className="cards">
       {currentPageUsers?.map((user) => (
           <User key={user.id} user={user} />
         ))}
         </div>
-    <MDBBtn
+    <MDBPagination className='mb-0'>
+        <MDBPaginationItem>
+        <MDBBtn
       disabled={currentPageNumber === 1}
       onClick={() => handlePreviousButtonClick()}
     >
       Previous Page
     </MDBBtn>
-    <MDBBtn
+        </MDBPaginationItem>
+        <MDBBtn
       disabled={currentPageNumber === numberOfPages}
       onClick={() => handleNextButtonClick()}
     >
       Next Page
     </MDBBtn>
+      </MDBPagination>     <div className="page-select" id="page-selector">
+    <select onChange={handlePageNumberClick} value={currentPageNumber}>{generatePageNumberArray(numberOfPages).map((page) => {
+      return <option value={page}>{page}</option>
+    })}</select> of {numberOfPages}
+    </div></MDBCard>
     </div>
   );
 };

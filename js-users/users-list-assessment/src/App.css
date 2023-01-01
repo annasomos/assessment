@@ -92,8 +92,11 @@ button:hover {
   margin: 20px;
   padding: 20px;
   color: white;
+  font-size: auto;
 }
 
-.cards{
-  
+
+
+.page-select {
+  color: black;
 }

@@ -36,7 +36,8 @@ const User: React.FC<UserProps> = ({
 
   return (<MDBCard className="p-3 mb-2 bg-dark bg-gradient text-white rounded-5">
     <MDBCardBody>
-      <MDBCardTitle>{userStatus === "active" ? (`${first_name} ${last_name}`) : (<del>{first_name} {last_name}</del>)}</MDBCardTitle>
+      <MDBCardTitle>{userStatus === "active" ? (`${first_name}`) : (<del>{first_name}</del>)}</MDBCardTitle>
+      <MDBCardTitle>{userStatus === "active" ? (`${last_name}`) : (<del>{last_name}</del>)}</MDBCardTitle>
       <MDBCardText>Created at: {created_at}</MDBCardText>
       <MDBBtn onClick={() => updateStatus(id)}>{userStatus === "active" ? "Lock" : "Unlock"}</MDBBtn>
       <MDBBtn onClick={() => navigateTo(`/edit/${id}`)}>Edit</MDBBtn>
