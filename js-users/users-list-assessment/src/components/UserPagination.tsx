@@ -65,25 +65,30 @@ const UserPagination: React.FC<PaginationProps> = ({
               disabled={currentPageNumber === 1}
               onClick={() => handlePreviousButtonClick()}
             >
-              <MDBIcon fas icon="angle-double-left" /> Previous
+              <MDBIcon fas icon="angle-double-left" />
             </MDBBtn>
+          </MDBPaginationItem>
+          <MDBPaginationItem>
+            <div className="page-select" id="page-selector">
+              <select
+                onChange={handlePageNumberClick}
+                value={currentPageNumber}
+              >
+                {generatePageNumberArray(numberOfPages).map((page) => {
+                  return <option value={page}>{page}</option>;
+                })}
+              </select>
+              of {numberOfPages}
+            </div>
           </MDBPaginationItem>
           <MDBPaginationItem>
             <MDBBtn
               disabled={currentPageNumber === numberOfPages}
               onClick={() => handleNextButtonClick()}
             >
-              Next <MDBIcon fas icon="angle-double-right" />
+              <MDBIcon fas icon="angle-double-right" />
             </MDBBtn>
           </MDBPaginationItem>
-          <div className="page-select" id="page-selector">
-            <select onChange={handlePageNumberClick} value={currentPageNumber}>
-              {generatePageNumberArray(numberOfPages).map((page) => {
-                return <option value={page}>{page}</option>;
-              })}
-            </select>
-            of {numberOfPages}
-          </div>
         </MDBPagination>
       </MDBCardBody>
     </div>

@@ -132,6 +132,7 @@ select {
 
 .page-select {
   color: black;
+  width: auto;
 }
 .navbar-toggler {
   background-color: transparent !important;
