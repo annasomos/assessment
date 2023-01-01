@@ -93,7 +93,7 @@ select {
 }
 
 .btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
   color: #fff;
   text-decoration: none;
 }
@@ -130,5 +130,14 @@ select {
   color: black;
 }
 .navbar-toggler {
-  background-color: #f9f9f9 !important;
+  background-color: transparent !important;
 }
+
+.container {
+  box-sizing: border-box;
+}
+
+.card-title{
+  padding: 0.1rem;
+}
+

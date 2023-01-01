@@ -6,6 +6,8 @@ import {
   MDBPagination,
   MDBPaginationItem,
   MDBCard,
+  MDBCardTitle,
+  MDBCardBody,
   MDBIcon
 } from "mdb-react-ui-kit";
 
@@ -53,14 +55,12 @@ const UserPagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <div className="container">
-      <h1 className="heading__title">Users</h1>
       <MDBCard>
-        <div className="cards">
+        <MDBCardTitle>Users</MDBCardTitle>
+        <MDBCardBody>
           {currentPageUsers?.map((user) => (
             <User key={user.id} user={user} />
           ))}
-        </div>
         <MDBPagination className="mb-0">
           <MDBPaginationItem>
             <MDBBtn
@@ -90,8 +90,8 @@ const UserPagination: React.FC<PaginationProps> = ({
               of {numberOfPages}
             </div>
         </MDBPagination>
+        </MDBCardBody>
       </MDBCard>
-    </div>
   );
 };
 
