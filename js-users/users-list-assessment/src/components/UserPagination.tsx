@@ -1,6 +1,9 @@
 import { UserModel } from "../model/UserModel";
 import { useState, useEffect } from "react";
 import User from "../components/User";
+import {
+  MDBBtn
+} from 'mdb-react-ui-kit';
 
 interface PaginationProps {
   users: UserModel[];
@@ -75,48 +78,26 @@ const UserPagination: React.FC<PaginationProps> = ({
 
   useEffect(() => setPageNumbers(generatePageNumberArray(numberOfPages)), [currentPageNumber]);
 
-  return (
-<div className="">
-    <div className="main-container">
-      <div className="heading">
-        <h1 className="heading__title">All Users</h1>
-      </div>
+  return (<div className="container">
+    <h1 className="heading__title">All Users</h1>
       <div className="cards">
       {currentPageUsers?.map((user) => (
           <User key={user.id} user={user} />
         ))}
-      </div>
-    </div>
-    <div>
-    <button
+        </div>
+    <MDBBtn
       disabled={currentPageNumber === 1}
       onClick={() => handlePreviousButtonClick()}
     >
       Previous Page
-    </button>
-    <div className="flex flex-row justify-center">
-          {pageNumbers?.map((pageNumber) => {
-            if (pageNumber <= maxPagesShown && pageNumber > minPagesShown) {
-              return (
-                <li
-                  key={pageNumber}
-                  onClick={(event) => handlePageNumberClick(event)}
-                  className="list-none mt-2 mr-8 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
-                >
-                  {pageNumber}
-                </li>
-              );
-            }
-          })}
-        </div>
-    <button
+    </MDBBtn>
+    <MDBBtn
       disabled={currentPageNumber === numberOfPages}
       onClick={() => handleNextButtonClick()}
     >
       Next Page
-    </button>
-  </div>
-  </div>
+    </MDBBtn>
+    </div>
   );
 };
 
