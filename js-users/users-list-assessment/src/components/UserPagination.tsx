@@ -19,8 +19,6 @@ const UserPagination: React.FC<PaginationProps> = ({
 
   const numberOfPages: number = Math.ceil(users.length / shownUsersPerPage);
 
-  const [pageNumbers, setPageNumbers] = useState<number[]>();
-
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
 
   const [currentPageUsers, setCurrentPageUsers] = useState<UserModel[]>();
@@ -52,11 +50,6 @@ const UserPagination: React.FC<PaginationProps> = ({
     }
     return pageNumbersShown;
   }
-
-  useEffect(
-    () => setPageNumbers(generatePageNumberArray(numberOfPages)),
-    [currentPageNumber]
-  );
 
   return (
     <div className="container">

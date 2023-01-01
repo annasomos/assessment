@@ -3,6 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../api/api";
 import { UserModel } from "../model/UserModel";
 import UserForm from "./UserForm";
+import {
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCard,
+} from "mdb-react-ui-kit";
 
 export const EditUser = () => {
   const [user, setUser] = useState<UserModel>();
@@ -49,15 +55,17 @@ export const EditUser = () => {
 
   return (
     <div className="edit-container">
-      <div className="heading">
-        <h1 className="heading__title">Edit User {user?.id}</h1>
-        <p className="heading__credits"></p>
-      </div>
+      <MDBCard>
+      <MDBCardBody>
+      <MDBCardTitle>Edit User {user?.id}</MDBCardTitle>
+      <MDBCardText>
       {isUserFound ? (
         <UserForm user={user} handleOnSubmit={handleOnSubmit} />
       ) : (
-        <div className="error-container">{errorMessage}</div>
-      )}
+        errorMessage
+      )}</MDBCardText>
+      </MDBCardBody>
+      </MDBCard>
     </div>
   );
 };

@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: black !important;
   text-decoration: inherit;
 }
 a:hover {
@@ -94,3 +94,4 @@ button:hover {
 .navbar-toggler {
   background-color: #f9f9f9 !important;
 }
+
