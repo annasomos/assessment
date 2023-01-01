@@ -54,17 +54,18 @@ export const EditUser = () => {
   };
 
   return (
-      <MDBCard>
+    <MDBCard>
       <MDBCardBody>
-      <MDBCardTitle>Edit User {user?.id}</MDBCardTitle>
-      <MDBCardText>
-      {isUserFound ? (
-        <UserForm user={user} handleOnSubmit={handleOnSubmit} />
-      ) : (
-        errorMessage
-      )}</MDBCardText>
+        <MDBCardTitle>Edit User {user?.id}</MDBCardTitle>
+        <MDBCardText>
+          {isUserFound ? (
+            <UserForm user={user} handleOnSubmit={handleOnSubmit} />
+          ) : (
+            errorMessage
+          )}
+        </MDBCardText>
       </MDBCardBody>
-      </MDBCard>
+    </MDBCard>
   );
 };
 

@@ -6,7 +6,7 @@ import {
   MDBPagination,
   MDBPaginationItem,
   MDBCardBody,
-  MDBIcon
+  MDBIcon,
 } from "mdb-react-ui-kit";
 
 interface PaginationProps {
@@ -53,12 +53,12 @@ const UserPagination: React.FC<PaginationProps> = ({
   }
 
   return (
-      <div className="m-5">
-        <h2>Users</h2>
-        <MDBCardBody>
-          {currentPageUsers?.map((user) => (
-            <User key={user.id} user={user} />
-          ))}
+    <div className="m-5">
+      <h2>Users</h2>
+      <MDBCardBody>
+        {currentPageUsers?.map((user) => (
+          <User key={user.id} user={user} />
+        ))}
         <MDBPagination className="mb-0">
           <MDBPaginationItem>
             <MDBBtn
@@ -76,20 +76,17 @@ const UserPagination: React.FC<PaginationProps> = ({
               Next <MDBIcon fas icon="angle-double-right" />
             </MDBBtn>
           </MDBPaginationItem>
-            <div className="page-select" id="page-selector">
-              <select
-                onChange={handlePageNumberClick}
-                value={currentPageNumber}
-              >
-                {generatePageNumberArray(numberOfPages).map((page) => {
-                  return <option value={page}>{page}</option>;
-                })}
-              </select>
-              of {numberOfPages}
-            </div>
+          <div className="page-select" id="page-selector">
+            <select onChange={handlePageNumberClick} value={currentPageNumber}>
+              {generatePageNumberArray(numberOfPages).map((page) => {
+                return <option value={page}>{page}</option>;
+              })}
+            </select>
+            of {numberOfPages}
+          </div>
         </MDBPagination>
-        </MDBCardBody>
-      </div>
+      </MDBCardBody>
+    </div>
   );
 };
 

@@ -1,16 +1,15 @@
 import { UserModel } from "../model/UserModel";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { api } from "../api/api";
 import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBBtn, 
-  MDBIcon
-} from 'mdb-react-ui-kit';
-
+  MDBBtn,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 
 interface UserProps {
   user: UserModel;
@@ -35,15 +34,33 @@ const User: React.FC<UserProps> = ({
     }
   }
 
-  return (<MDBCard className="p-3 mb-2 bg-light bg-gradient text-dark rounded-5">
-    <MDBCardBody>
-      <MDBCardTitle>{userStatus === "active" ? (`${first_name}`) : (<del>{first_name}</del>)}</MDBCardTitle>
-      <MDBCardTitle>{userStatus === "active" ? (`${last_name}`) : (<del>{last_name}</del>)}</MDBCardTitle>
-      <MDBCardText>Created at: {created_at}</MDBCardText>
-      <MDBBtn onClick={() => updateStatus(id)} className="btn-grad">{userStatus === "active" ? (<i>Lock <MDBIcon fas icon="lock" /></i>) : (<i>Unlock <MDBIcon fas icon="lock-open" /></i>)}</MDBBtn>
-      <MDBBtn onClick={() => navigateTo(`/edit/${id}`)} className="btn-grad">Edit <MDBIcon fas icon="user-edit" /></MDBBtn>
-    </MDBCardBody>
-  </MDBCard>);
+  return (
+    <MDBCard className="p-3 mb-2 bg-light bg-gradient text-dark rounded-5">
+      <MDBCardBody>
+        <MDBCardTitle>
+          {userStatus === "active" ? `${first_name}` : <del>{first_name}</del>}
+        </MDBCardTitle>
+        <MDBCardTitle>
+          {userStatus === "active" ? `${last_name}` : <del>{last_name}</del>}
+        </MDBCardTitle>
+        <MDBCardText>Created at: {created_at}</MDBCardText>
+        <MDBBtn onClick={() => updateStatus(id)} className="btn-grad">
+          {userStatus === "active" ? (
+            <i>
+              Lock <MDBIcon fas icon="lock" />
+            </i>
+          ) : (
+            <i>
+              Unlock <MDBIcon fas icon="lock-open" />
+            </i>
+          )}
+        </MDBBtn>
+        <MDBBtn onClick={() => navigateTo(`/edit/${id}`)} className="btn-grad">
+          Edit <MDBIcon fas icon="user-edit" />
+        </MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+  );
 };
 
 export default User;
