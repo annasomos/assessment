@@ -5,8 +5,8 @@ const UserForm = ({ user, handleOnSubmit }: any) => {
     <MDBCard>
       <div className="user-form">
         <form onSubmit={handleOnSubmit}>
-          <div className="form-row">
-            <label>First Name:</label>
+          <div className="mb-5">
+            <label className="name-label">First Name:</label>
             <input
               required={true}
               type="text"
@@ -15,8 +15,8 @@ const UserForm = ({ user, handleOnSubmit }: any) => {
               defaultValue={user?.first_name}
             />
           </div>
-          <div className="form-row">
-            <label>Last Name:</label>
+          <div className="mb-5">
+            <label className="name-label">Last Name:</label>
             <input
               required={true}
               type="text"

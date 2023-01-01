@@ -57,6 +57,8 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+input:hover,
 button:hover {
   border-color: #646cff;
   outline: 4px auto -webkit-focus-ring-color;
@@ -65,7 +67,9 @@ button:hover {
 input {
   color: black;
   background-color: transparent;
-  margin: 0.2rem !important;
+  margin: 10px;
+  text-align: center;
+  border: none;
 }
 
 select {
@@ -140,4 +144,9 @@ select {
 
 .card-title {
   padding: 0.1rem;
+}
+
+.name-label {
+  margin: 10px;
+  padding: 10px;
 }
