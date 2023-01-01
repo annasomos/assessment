@@ -5,6 +5,11 @@ import {
   MDBNavbar,
   MDBNavbarNav,
   MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBNavbarItem,
+  MDBNavbarBrand,
+  MDBIcon,
 } from "mdb-react-ui-kit";
 
 const Navbar = () => {
@@ -12,12 +17,31 @@ const Navbar = () => {
   return (
     <nav>
       <MDBNavbar expand="lg" light bgColor="light">
-        <MDBNavbarLink active aria-current="page">
-          <Link to="/">Home</Link>
-        </MDBNavbarLink>
-        <MDBNavbarLink>
-          <Link to="/new">Add New User</Link>
-        </MDBNavbarLink>
+        <MDBContainer fluid>
+          <MDBNavbarBrand>Second Assessment</MDBNavbarBrand>
+          <MDBNavbarToggler
+            type="button"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            onClick={() => setShowNavSecond(!showNavSecond)}
+          >
+            <MDBIcon icon="bars" fas />
+          </MDBNavbarToggler>
+          <MDBCollapse navbar show={showNavSecond}>
+            <MDBNavbarNav>
+              <MDBNavbarItem>
+                <MDBNavbarLink active aria-current="page">
+                  <Link to="/">Home</Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink>
+                  <Link to="/new">Add New User</Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBContainer>
       </MDBNavbar>
     </nav>
   );

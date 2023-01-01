@@ -23,7 +23,7 @@ const UserList = () => {
   return (
     <>
       {isLoading ? (
-        <MDBSpinner role="status">
+        <MDBSpinner className='m-5' role='status'>
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
       ) : (
