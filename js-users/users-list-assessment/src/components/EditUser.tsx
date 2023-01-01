@@ -54,7 +54,6 @@ export const EditUser = () => {
   };
 
   return (
-    <div className="edit-container">
       <MDBCard>
       <MDBCardBody>
       <MDBCardTitle>Edit User {user?.id}</MDBCardTitle>
@@ -66,7 +65,6 @@ export const EditUser = () => {
       )}</MDBCardText>
       </MDBCardBody>
       </MDBCard>
-    </div>
   );
 };
 

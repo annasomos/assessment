@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { api } from "../api/api";
 import UserForm from "./UserForm";
+import { MDBCard, MDBCardBody, MDBCardTitle } from "mdb-react-ui-kit";
 
 const AddNewUser = () => {
   const navigateTo = useNavigate();
@@ -22,13 +23,12 @@ const AddNewUser = () => {
     navigateTo("../");
   };
   return (
-    <>
-      <div className="heading">
-        <h1 className="heading__title">Add User</h1>
-        <p className="heading__credits"></p>
-      </div>
-      <UserForm handleOnSubmit={handleOnSubmit} />
-    </>
+    <MDBCard>
+      <MDBCardBody>
+        <MDBCardTitle>Add User</MDBCardTitle>
+        <UserForm handleOnSubmit={handleOnSubmit} />
+      </MDBCardBody>
+    </MDBCard>
   );
 };
 
