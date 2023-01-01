@@ -7,7 +7,8 @@ import {
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBBtn
+  MDBBtn, 
+  MDBIcon
 } from 'mdb-react-ui-kit';
 
 
@@ -34,13 +35,13 @@ const User: React.FC<UserProps> = ({
     }
   }
 
-  return (<MDBCard className="p-3 mb-2 bg-dark bg-gradient text-white rounded-5">
+  return (<MDBCard className="p-3 mb-2 bg-light bg-gradient text-dark rounded-5">
     <MDBCardBody>
       <MDBCardTitle>{userStatus === "active" ? (`${first_name}`) : (<del>{first_name}</del>)}</MDBCardTitle>
       <MDBCardTitle>{userStatus === "active" ? (`${last_name}`) : (<del>{last_name}</del>)}</MDBCardTitle>
       <MDBCardText>Created at: {created_at}</MDBCardText>
-      <MDBBtn onClick={() => updateStatus(id)}>{userStatus === "active" ? "Lock" : "Unlock"}</MDBBtn>
-      <MDBBtn onClick={() => navigateTo(`/edit/${id}`)}>Edit</MDBBtn>
+      <MDBBtn onClick={() => updateStatus(id)} className="btn-grad">{userStatus === "active" ? (<i>Lock <MDBIcon fas icon="lock" /></i>) : (<i>Unlock <MDBIcon fas icon="lock-open" /></i>)}</MDBBtn>
+      <MDBBtn onClick={() => navigateTo(`/edit/${id}`)} className="btn-grad">Edit <MDBIcon fas icon="user-edit" /></MDBBtn>
     </MDBCardBody>
   </MDBCard>);
 };
