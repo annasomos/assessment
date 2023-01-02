@@ -53,7 +53,7 @@ const UserPagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <div className="m-5">
+    <div className="container">
       <h2>Users</h2>
       <MDBCardBody>
         {currentPageUsers?.map((user) => (

@@ -4,10 +4,10 @@ import Navbar from "./view/Navbar";
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 }
 
