@@ -75,7 +75,7 @@ const UserPagination: React.FC<PaginationProps> = ({
                 value={currentPageNumber}
               >
                 {generatePageNumberArray(numberOfPages).map((page) => {
-                  return <option value={page}>{page}</option>;
+                  return <option value={page} key={page}>{page}</option>;
                 })}
               </select>
               of {numberOfPages}

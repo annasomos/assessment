@@ -17,7 +17,7 @@ interface UserProps {
 }
 
 const User: React.FC<UserProps> = ({
-  user: { id, first_name, last_name, created_at, status },
+  user: { id, first_name, last_name, created_at, updated_at, status },
 }: UserProps) => {
   const navigateTo = useNavigate();
   const [userStatus, setUserStatus] = useState<string>(status);
@@ -50,6 +50,7 @@ const User: React.FC<UserProps> = ({
             {userStatus === "active" ? `${last_name}` : <del>{last_name}</del>}
           </MDBCardTitle>
           <MDBCardText>Created at: {created_at}</MDBCardText>
+          <MDBCardText>Last update: {updated_at}</MDBCardText>
           <MDBBtn onClick={() => updateStatus(id)} className="btn-grad">
             {userStatus === "active" ? (
               <i>
