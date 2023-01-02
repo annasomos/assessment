@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <MDBNavbar expand="lg" light bgColor="light">
       <MDBContainer fluid>
-        <MDBNavbarBrand>Second Assessment</MDBNavbarBrand>
+        <MDBNavbarBrand>User List</MDBNavbarBrand>
         <MDBNavbarToggler
           type="button"
           aria-expanded="false"

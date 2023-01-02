@@ -37,7 +37,7 @@ const User: React.FC<UserProps> = ({
 
   return (
     <MDBRow>
-      <MDBCard className="p-3 mb-2 bg-light bg-gradient text-dark rounded-5">
+      <MDBCard shadow="0" border="info" background="white" className="mb-3">
         <MDBCardBody>
           <MDBCardTitle>
             {userStatus === "active" ? (

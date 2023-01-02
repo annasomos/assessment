@@ -70,7 +70,7 @@ const UserPagination: React.FC<PaginationProps> = ({
           </MDBPaginationItem>
           <MDBPaginationItem>
             <div className="page-select" id="page-selector">
-              <select
+              <select className="page-selector"
                 onChange={handlePageNumberClick}
                 value={currentPageNumber}
               >

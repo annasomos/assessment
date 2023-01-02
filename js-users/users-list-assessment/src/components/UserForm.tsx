@@ -9,6 +9,7 @@ const UserForm = ({ user, handleOnSubmit }: any) => {
             <label className="name-label">First Name:</label>
             <input
               required={true}
+              maxLength={15}
               type="text"
               placeholder="First Name"
               name="first_name"
@@ -19,6 +20,7 @@ const UserForm = ({ user, handleOnSubmit }: any) => {
             <label className="name-label">Last Name:</label>
             <input
               required={true}
+              maxLength={15}
               type="text"
               placeholder="Last Name"
               name="last_name"

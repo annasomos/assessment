@@ -28,7 +28,8 @@ const UserList = () => {
         </MDBSpinner>
       ) : (
         <div className="container">
-        <UserPagination users={allUsers} /></div>
+          <UserPagination users={allUsers} />
+        </div>
       )}
     </>
   );
