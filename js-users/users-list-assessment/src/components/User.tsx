@@ -2,6 +2,7 @@ import { UserModel } from "../model/UserModel";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../api/api";
+import { formatDate } from "../util/dateformatter";
 import {
   MDBCard,
   MDBCardBody,
@@ -49,8 +50,8 @@ const User: React.FC<UserProps> = ({
           <MDBCardTitle>
             {userStatus === "active" ? `${last_name}` : <del>{last_name}</del>}
           </MDBCardTitle>
-          <MDBCardText>Created at: {created_at}</MDBCardText>
-          <MDBCardText>Last update: {updated_at}</MDBCardText>
+          <MDBCardText>Created at: {formatDate(created_at)}</MDBCardText>
+          <MDBCardText>Updated at: {formatDate(updated_at)}</MDBCardText>
           <MDBBtn onClick={() => updateStatus(id)} className="btn-grad">
             {userStatus === "active" ? (
               <i>
