@@ -132,6 +132,7 @@ input {
 
 .card-title {
   overflow-wrap: break-word;
+  max-width: 200px;
 }
 
 .container {
