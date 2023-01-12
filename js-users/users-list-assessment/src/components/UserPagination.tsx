@@ -59,7 +59,7 @@ const UserPagination: React.FC<PaginationProps> = ({
         {currentPageUsers?.map((user) => (
           <User key={user.id} user={user} />
         ))}
-        <MDBPagination className="mb-0">
+        <MDBPagination center className="mb-0">
           <MDBPaginationItem>
             <MDBBtn
               disabled={currentPageNumber === 1}

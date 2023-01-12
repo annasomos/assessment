@@ -27,9 +27,7 @@ const UserList = () => {
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
       ) : (
-        <div className="container">
           <UserPagination users={allUsers} />
-        </div>
       )}
     </>
   );
