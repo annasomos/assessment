@@ -12,8 +12,10 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
+
 const Navbar = () => {
   const [showNavSecond, setShowNavSecond] = useState(false);
+
   return (
     <MDBNavbar expand="lg" light bgColor="light">
       <MDBContainer fluid>
@@ -30,7 +32,7 @@ const Navbar = () => {
           <MDBNavbarNav>
             <MDBNavbarItem>
               <MDBNavbarLink active aria-current="page">
-                <Link to="/">Home</Link>
+                <Link reloadDocument to="/">Home</Link>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
