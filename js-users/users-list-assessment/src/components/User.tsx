@@ -33,6 +33,7 @@ const User: React.FC<UserProps> = ({
       setUserStatus(status);
     } catch (error) {
       console.log(error);
+      alert("Status update failed");
     }
   }
 
