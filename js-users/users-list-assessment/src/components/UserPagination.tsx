@@ -32,11 +32,11 @@ const UserPagination: React.FC<PaginationProps> = ({
   }, [currentPageNumber, users]);
 
   function handlePreviousButtonClick() {
-    setCurrentPageNumber((currentPageNum) => currentPageNum - 1);
+    setCurrentPageNumber(currentPageNumber - 1);
   }
 
   function handleNextButtonClick() {
-    setCurrentPageNumber((currentPageNum) => currentPageNum + 1);
+    setCurrentPageNumber(currentPageNumber + 1);
   }
 
   function handlePageNumberClick(event: any) {
