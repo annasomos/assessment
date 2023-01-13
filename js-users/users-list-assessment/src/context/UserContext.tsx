@@ -14,11 +14,11 @@ export const UserContext = createContext<UserContextType>({
 });
 
 type UserProviderProps = {
-  children: ReactElement[];
+  children: ReactElement[] | ReactElement;
 };
 
 const UserProvider = ({ children }: UserProviderProps) => {
-  const [allUsers, setAllUsers] = useState<UserModel[] | null>(null);
+  const [allUsers, setAllUsers] = useState<UserModel[]>([]);
 
   async function getUsers() {
     const users = await api.getAllUsers();
