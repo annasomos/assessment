@@ -12,7 +12,7 @@ const AddNewUser = () => {
     status: string;
   };
 
-  const handleOnSubmit = async (event: any) => {
+  const handleAddUserOnSubmit = async (event: any) => {
     event.preventDefault();
     const newUser: newUser = {
       first_name: event.target["first_name"].value,
@@ -26,7 +26,7 @@ const AddNewUser = () => {
     <MDBCard>
       <MDBCardBody>
         <MDBCardTitle>Add User</MDBCardTitle>
-        <UserForm handleOnSubmit={handleOnSubmit} />
+        <UserForm handleOnSubmit={handleAddUserOnSubmit} />
       </MDBCardBody>
     </MDBCard>
   );

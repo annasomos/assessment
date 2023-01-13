@@ -43,7 +43,7 @@ export const EditUser = () => {
     });
   }, [params.id]);
 
-  const handleOnSubmit = async (event: any) => {
+  const handleUpdateOnSubmit = async (event: any) => {
     event.preventDefault();
     const updatedUser: updatedUser = {
       first_name: event.target["first_name"].value,
@@ -59,7 +59,7 @@ export const EditUser = () => {
         <MDBCardTitle>Edit User {user?.id}</MDBCardTitle>
         <MDBCardText>
           {isUserFound ? (
-            <UserForm user={user} handleOnSubmit={handleOnSubmit} />
+            <UserForm user={user} handleOnSubmit={handleUpdateOnSubmit} />
           ) : (
             errorMessage
           )}
