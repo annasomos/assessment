@@ -1,5 +1,3 @@
-//TO FIX: TEST SUITE NOT WORKING: cannot read properties of null(usecontext(UserContext))
-
 import UserList from "../components/UserList";
 import { render, screen, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
@@ -7,8 +5,7 @@ import User from "../components/User";
 import UserForm from "../components/UserForm";
 import AddNewUser from "../components/AddNewUser";
 import { mockResponse } from "../util/testData";
-import {useContext} from "react"
-import UserProvider, { UserContext } from "../context/UserContext"
+import { UserContext } from "../context/UserContext";
 
 beforeEach(() => {
   cleanup();
@@ -21,12 +18,14 @@ afterEach(() => {
 const handleUpdateOnSubmit = jest.fn();
 
 test("List all users, get 6 user cards on screen", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Created at/);
@@ -34,12 +33,14 @@ test("List all users, get 6 user cards on screen", () => {
 });
 
 test("List all users, get 1 user with name Luna", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Luna/);
@@ -47,12 +48,14 @@ test("List all users, get 1 user with name Luna", () => {
 });
 
 test("List all users, get 1 user with name Harry", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Harry/);
@@ -60,12 +63,14 @@ test("List all users, get 1 user with name Harry", () => {
 });
 
 test("List all users, get 1 user with name Hermione", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Hermione/);
@@ -73,12 +78,14 @@ test("List all users, get 1 user with name Hermione", () => {
 });
 
 test("List all users, get 1 user with name Ronald", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Ronald/);
@@ -86,12 +93,14 @@ test("List all users, get 1 user with name Ronald", () => {
 });
 
 test("List all users, get 1 user with name Neville", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Neville/);
@@ -99,12 +108,14 @@ test("List all users, get 1 user with name Neville", () => {
 });
 
 test("List all users, get 1 user with name Sirius", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const text = screen.getAllByText(/Sirius/);
@@ -112,12 +123,14 @@ test("List all users, get 1 user with name Sirius", () => {
 });
 
 test("List all users, get all user cards with correct names", () => {
-  const setAllUsers = jest.fn()
+  const setAllUsers = jest.fn();
   render(
-    <UserContext.Provider value={{allUsers: mockResponse, setAllUsers: setAllUsers}}>
-    <BrowserRouter>
-      <UserList />
-    </BrowserRouter>
+    <UserContext.Provider
+      value={{ allUsers: mockResponse, setAllUsers: setAllUsers }}
+    >
+      <BrowserRouter>
+        <UserList />
+      </BrowserRouter>
     </UserContext.Provider>
   );
   const harry = screen.getAllByText(/Harry/);
