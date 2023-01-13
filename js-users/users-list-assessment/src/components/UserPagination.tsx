@@ -13,11 +13,11 @@ import {
 
 const UserPagination = () => {
 
-  const users = useContext(UserContext);
+  const {allUsers} = useContext(UserContext);
 
   const shownUsersPerPage: number = 10;
 
-  const numberOfPages: number = Math.ceil(users.length / shownUsersPerPage);
+  const numberOfPages: number = Math.ceil(allUsers.length / shownUsersPerPage);
 
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
 
@@ -26,9 +26,9 @@ const UserPagination = () => {
   useEffect(() => {
     const startNumber = (currentPageNumber - 1) * shownUsersPerPage;
     const endNumber = startNumber + shownUsersPerPage;
-    const usersPerCurrentPage = users.slice(startNumber, endNumber);
+    const usersPerCurrentPage = allUsers.slice(startNumber, endNumber);
     setCurrentPageUsers(usersPerCurrentPage);
-  }, [currentPageNumber, users]);
+  }, [currentPageNumber, allUsers]);
 
   function handlePreviousButtonClick() {
     setCurrentPageNumber(currentPageNumber - 1);

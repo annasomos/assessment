@@ -3,8 +3,13 @@ import { UserModel } from "../model/UserModel";
 import { api } from "../api/api";
 import { MDBSpinner } from "mdb-react-ui-kit";
 
+type UserContextType = {
+  allUsers: UserModel[],
+  setAllUsers: any
 
-export const UserContext = createContext<UserModel[]>([]);
+}
+
+export const UserContext = createContext<any>({});
 
 
 export const UserProvider = ({children}: any) => {
@@ -27,7 +32,7 @@ export const UserProvider = ({children}: any) => {
   }
 
   return (
-    <UserContext.Provider value={allUsers}>
+    <UserContext.Provider value={{allUsers: allUsers, setAllUsers: setAllUsers}}>
       {children}
     </UserContext.Provider>
   )
