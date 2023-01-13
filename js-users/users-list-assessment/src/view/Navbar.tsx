@@ -4,14 +4,13 @@ import {
   MDBContainer,
   MDBNavbar,
   MDBNavbarNav,
-  MDBNavbarLink,
   MDBNavbarToggler,
   MDBCollapse,
   MDBNavbarItem,
   MDBNavbarBrand,
   MDBIcon,
+  MDBBtn
 } from "mdb-react-ui-kit";
-
 
 const Navbar = () => {
   const [showNavSecond, setShowNavSecond] = useState(false);
@@ -19,7 +18,7 @@ const Navbar = () => {
   return (
     <MDBNavbar expand="lg" light bgColor="light">
       <MDBContainer fluid>
-        <MDBNavbarBrand>User List</MDBNavbarBrand>
+        <MDBNavbarBrand>USER LIST APP</MDBNavbarBrand>
         <MDBNavbarToggler
           type="button"
           aria-expanded="false"
@@ -31,10 +30,16 @@ const Navbar = () => {
         <MDBCollapse navbar show={showNavSecond}>
           <MDBNavbarNav>
             <MDBNavbarItem>
-                <Link reloadDocument to="/">Home </Link>
+              <button className="btn-menu">
+              <Link reloadDocument to="/">
+                Home
+              </Link>
+              </button>
             </MDBNavbarItem>
             <MDBNavbarItem>
-                <Link to="/new">Add New User </Link>
+              <button className="btn-menu">
+              <Link to="/new">Add New User </Link>
+              </button>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>

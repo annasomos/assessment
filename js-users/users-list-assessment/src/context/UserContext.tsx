@@ -1,19 +1,23 @@
-import {useState, useEffect, createContext} from "react"
+import { useState, useEffect, createContext, ReactElement } from "react";
 import { UserModel } from "../model/UserModel";
 import { api } from "../api/api";
 import { MDBSpinner } from "mdb-react-ui-kit";
 
 type UserContextType = {
-  allUsers: UserModel[],
-  setAllUsers: any
+  allUsers: UserModel[];
+  setAllUsers: (users: UserModel[]) => void;
+};
 
-}
+export const UserContext = createContext<UserContextType>({
+  allUsers: [],
+  setAllUsers: () => {},
+});
 
-export const UserContext = createContext<any>({});
+type UserProviderProps = {
+  children: ReactElement[];
+};
 
-
-export const UserProvider = ({children}: any) => {
-
+const UserProvider = ({ children }: UserProviderProps) => {
   const [allUsers, setAllUsers] = useState<UserModel[] | null>(null);
 
   async function getUsers() {
@@ -25,17 +29,21 @@ export const UserProvider = ({children}: any) => {
     getUsers();
   }, []);
 
-  if(allUsers === null){
-    return (<MDBSpinner className="m-5" role="status">
-    <span className="visually-hidden">Loading...</span>
-  </MDBSpinner>)
+  if (allUsers === null) {
+    return (
+      <MDBSpinner className="m-5" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </MDBSpinner>
+    );
   }
 
   return (
-    <UserContext.Provider value={{allUsers: allUsers, setAllUsers: setAllUsers}}>
+    <UserContext.Provider
+      value={{ allUsers: allUsers, setAllUsers: setAllUsers }}
+    >
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};
 
 export default UserProvider;

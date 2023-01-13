@@ -28,13 +28,16 @@ export const api = {
   },
 
   async addNewUser(newUser: newUser) {
-    const addUser = await fetch("https://assessment-users-backend.herokuapp.com/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
+    const addUser = await fetch(
+      "https://assessment-users-backend.herokuapp.com/users",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }
+    );
     return addUser.json();
   },
 
@@ -62,12 +65,15 @@ export const api = {
   },
 
   async updateUserById(id: string, updatedUser: updatedUser) {
-    await fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedUser),
-    });
+    const updateUser = await fetch(
+      `https://assessment-users-backend.herokuapp.com/users/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUser),
+      }
+    );
   },
 };
