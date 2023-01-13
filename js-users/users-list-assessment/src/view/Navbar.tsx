@@ -31,14 +31,10 @@ const Navbar = () => {
         <MDBCollapse navbar show={showNavSecond}>
           <MDBNavbarNav>
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current="page">
-                <Link reloadDocument to="/">Home</Link>
-              </MDBNavbarLink>
+                <Link reloadDocument to="/">Home </Link>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink>
-                <Link to="/new">Add New User</Link>
-              </MDBNavbarLink>
+                <Link to="/new">Add New User </Link>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>

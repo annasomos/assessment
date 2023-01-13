@@ -1,36 +1,12 @@
-import { useState, useEffect } from "react";
-import { UserModel } from "../model/UserModel";
+import { useContext } from "react";
 import UserPagination from "./UserPagination";
-import { api } from "../api/api";
 import { MDBSpinner } from "mdb-react-ui-kit";
+import { UserContext } from "../context/UserContext";
 
 const UserList = () => {
-  const [allUsers, setAllUsers] = useState<UserModel[]>([]);
+  const users = useContext(UserContext);
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  async function getUsers() {
-    setIsLoading(true);
-    const users = await api.getAllUsers();
-    setAllUsers(users);
-    setIsLoading(false);
-  }
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  return (
-    <>
-      {isLoading ? (
-        <MDBSpinner className="m-5" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </MDBSpinner>
-      ) : (
-          <UserPagination users={allUsers} />
-      )}
-    </>
-  );
+  return <UserPagination />;
 };
 
 export default UserList;

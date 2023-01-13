@@ -1,5 +1,6 @@
 import { UserModel } from "../model/UserModel";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import User from "../components/User";
 import {
   MDBBtn,
@@ -9,13 +10,11 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
-interface PaginationProps {
-  users: UserModel[];
-}
 
-const UserPagination: React.FC<PaginationProps> = ({
-  users,
-}: PaginationProps) => {
+const UserPagination = () => {
+
+  const users = useContext(UserContext);
+
   const shownUsersPerPage: number = 10;
 
   const numberOfPages: number = Math.ceil(users.length / shownUsersPerPage);
