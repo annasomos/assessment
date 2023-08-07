@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:intl/intl.dart';
 part 'user.g.dart';
 
 enum Status { locked, active }
@@ -14,7 +15,6 @@ class User {
       required this.createdAt,
       required this.updatedAt});
 
-
   final int id;
   @JsonKey()
   final String firstName;
@@ -27,8 +27,11 @@ class User {
   @JsonKey()
   final DateTime updatedAt;
 
-
   Map<String, dynamic> toJson() => _$UserToJson(this);
+  String getFormattedCreatedAt() =>
+      'Created at: ${DateFormat.yMMMEd().format(createdAt)}';
+  String getFormattedUpdatedAt() => 'Last updated: ${DateFormat.yMMMEd().format(updatedAt)}';
+  String getFullName() => '$firstName $lastName';
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   factory User.fromJsonString(String jsonString) =>

@@ -63,7 +63,7 @@ class UserListScreen extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '${allUsers[index].firstName} ${allUsers[index].lastName}',
+                            allUsers[index].getFullName(),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
@@ -71,10 +71,8 @@ class UserListScreen extends ConsumerWidget {
                             ),
                           ),
                           const SizedBox(height: 16),
-                          Text(
-                              'Created at: ${allUsers[index].createdAt}'),
-                          Text(
-                              'Last updated: ${allUsers[index].updatedAt}'),
+                          Text(allUsers[index].getFormattedCreatedAt()),
+                          Text(allUsers[index].getFormattedUpdatedAt()),
                           const SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
