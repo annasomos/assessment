@@ -12,11 +12,11 @@ class UserListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Future handleStatusChange(User user) async {
-      return await ref.read(updateUserStatusMutation.notifier).mutate(user);
+      return await ref.read(updateUserStatusMutation).mutate(user);
     }
 
     Future handleDelete(int userId) async {
-      return await ref.read(deleteUserMutation.notifier).mutate(userId);
+      return await ref.read(deleteUserMutation).mutate(userId);
     }
 
     final AsyncValue<List<User>> users = ref.watch(getAllUsersProvider);

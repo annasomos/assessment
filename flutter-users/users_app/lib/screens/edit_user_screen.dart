@@ -14,7 +14,7 @@ class EditUserScreen extends ConsumerWidget {
     String firstName = '';
     String lastName = '';
     Future onSave(UserParams params) async {
-      return await ref.read(editUserMutation.notifier).mutate(params);
+      return await ref.read(editUserMutation).mutate(params);
     }
 
     final AsyncValue<User> user = ref.watch(getUserByIdProvider(userId));

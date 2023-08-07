@@ -13,7 +13,7 @@ class NewUserScreen extends ConsumerWidget {
     String firstName = '';
     String lastName = '';
     Future onSave(UserParams params) async {
-      await ref.read(addUserMutation.notifier).mutate(params);
+      await ref.read(addUserMutation).mutate(params);
     }
 
     return Scaffold(
