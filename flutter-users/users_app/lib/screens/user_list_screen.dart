@@ -47,7 +47,7 @@ class UserListScreen extends ConsumerWidget {
                 itemBuilder: (context, index) => Card(
                   key: ValueKey(allUsers[index]),
                   elevation: 2,
-                  color: allUsers[index].status == 'active'
+                  color: allUsers[index].status == Status.active
                       ? Theme.of(context).colorScheme.primaryContainer
                       : Theme.of(context)
                           .colorScheme
@@ -72,9 +72,9 @@ class UserListScreen extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                              'Created at: ${allUsers[index].createdAt.split('T').join(' ').split('.')[0]}'),
+                              'Created at: ${allUsers[index].createdAt}'),
                           Text(
-                              'Last updated: ${allUsers[index].updatedAt.split('T').join(' ').split('.')[0]}'),
+                              'Last updated: ${allUsers[index].updatedAt}'),
                           const SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -87,10 +87,10 @@ class UserListScreen extends ConsumerWidget {
                                       : () {
                                           handleStatusChange(allUsers[index]);
                                         },
-                                  icon: allUsers[index].status == 'active'
+                                  icon: allUsers[index].status == Status.active
                                       ? const Icon(Icons.lock)
                                       : const Icon(Icons.lock_open),
-                                  label: Text(allUsers[index].status == 'active'
+                                  label: Text(allUsers[index].status == Status.active
                                       ? 'Lock'
                                       : 'Activate'),
                                 ),

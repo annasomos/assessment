@@ -25,7 +25,7 @@ class UsersRepository {
 
   Future<Response<dynamic>> updateUserStatusBy(User user) async {
     final res = await dio.put('/users/${user.id}.json', data: {
-      'status': user.status == 'active' ? 'locked' : 'active',
+      'status': user.status ==  Status.active ? 'locked': 'active',
     });
     return res;
   }
