@@ -5,9 +5,34 @@ import '../models/user.dart';
 import 'mutation_provider.dart';
 part 'users_provider.g.dart';
 
+// @riverpod
+// Future<List<User>> getAllUsers(GetAllUsersRef ref) async {
+//   return ref.watch(usersRepositoryProvider).getAllUsers();
+// }
+
 @riverpod
-Future<List<User>> getAllUsers(GetAllUsersRef ref) async {
-  return ref.watch(usersRepositoryProvider).getAllUsers();
+class GetAllUsers extends _$GetAllUsers {
+  @override
+  FutureOr<List<User>> build() {
+    return ref.watch(usersRepositoryProvider).getAllUsers();
+  }
+
+  void updateList(User user) {
+    state = state.whenData((value) => value.map((e) {
+          if (e.id == user.id) {
+            return User(
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+                status: user.status == Status.active
+                    ? Status.locked
+                    : Status.active);
+          }
+          return e;
+        }).toList());
+  }
 }
 
 @riverpod
@@ -15,11 +40,23 @@ Future<User> getUserById(GetUserByIdRef ref, int userId) async {
   return ref.watch(usersRepositoryProvider).getUserById(userId);
 }
 
-final updateUserStatusMutation = MutationProvider.create(
-  mutationFn: (ref, User user) =>
-      ref.read(usersRepositoryProvider).updateUserStatusBy(user),
-  onSuccess: (ref, __, ___) async => ref.invalidate(getAllUsersProvider),
+final updateUserStatusMutation = MutationProvider.create<dynamic, User>(
+  mutationFn: (ref, User user) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return ref.read(usersRepositoryProvider).updateUserStatusBy(user);
+  },
+  onSuccess: (ref, __, user) async => ref.read(getAllUsersProvider.notifier).updateList(user),
 );
+
+MutationNotifierProvider<dynamic, User> updateUserStatusMutation2() {
+return MutationProvider.create<dynamic, User>(
+  mutationFn: (ref, User user) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return ref.read(usersRepositoryProvider).updateUserStatusBy(user);
+  },
+  onSuccess: (ref, __, user) async => ref.read(getAllUsersProvider.notifier).updateList(user),
+);
+}
 
 final deleteUserMutation = MutationProvider.create(
   mutationFn: (ref, int userId) =>

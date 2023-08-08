@@ -16,15 +16,15 @@ class User {
       required this.updatedAt});
 
   final int id;
-  @JsonKey()
+  @JsonKey(name: 'first_name')
   final String firstName;
-  @JsonKey()
+  @JsonKey(name: 'last_name')
   final String lastName;
-  @JsonKey()
+  @JsonKey(name: 'status')
   final Status status;
-  @JsonKey()
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
-  @JsonKey()
+  @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
 
   Map<String, dynamic> toJson() => _$UserToJson(this);

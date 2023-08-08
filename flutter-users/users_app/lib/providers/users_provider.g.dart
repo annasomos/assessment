@@ -6,20 +6,6 @@ part of 'users_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllUsersHash() => r'5ac7c059e5604f72534494331a91d8c3173b6787';
-
-/// See also [getAllUsers].
-@ProviderFor(getAllUsers)
-final getAllUsersProvider = AutoDisposeFutureProvider<List<User>>.internal(
-  getAllUsers,
-  name: r'getAllUsersProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$getAllUsersHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef GetAllUsersRef = AutoDisposeFutureProviderRef<List<User>>;
 String _$getUserByIdHash() => r'fbb08bc3d5f5fb1957a34f65ce6715423643373e';
 
 /// Copied from Dart SDK
@@ -123,5 +109,21 @@ class GetUserByIdProvider extends AutoDisposeFutureProvider<User> {
     return _SystemHash.finish(hash);
   }
 }
+
+String _$getAllUsersHash() => r'57a4c5a69ad4b7a1c7614d9f819c6fb663a0c470';
+
+/// See also [GetAllUsers].
+@ProviderFor(GetAllUsers)
+final getAllUsersProvider =
+    AutoDisposeAsyncNotifierProvider<GetAllUsers, List<User>>.internal(
+  GetAllUsers.new,
+  name: r'getAllUsersProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getAllUsersHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$GetAllUsers = AutoDisposeAsyncNotifier<List<User>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

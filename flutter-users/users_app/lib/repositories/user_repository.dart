@@ -20,12 +20,17 @@ class UsersRepository {
 
   Future<List<User>> getAllUsers() async {
     final res = await dio.get('/users.json');
-    return res.data.map((user) => User.fromJson(user)).toList().cast<User>();
+    final List<User> userList =
+        res.data.map((user) => User.fromJson(user)).toList().cast<User>();
+    userList.sort(
+      (a, b) => b.createdAt.compareTo(a.createdAt),
+    );
+    return userList;
   }
 
   Future<Response<dynamic>> updateUserStatusBy(User user) async {
     final res = await dio.put('/users/${user.id}.json', data: {
-      'status': user.status ==  Status.active ? 'locked': 'active',
+      'status': user.status == Status.active ? 'locked' : 'active',
     });
     return res;
   }
