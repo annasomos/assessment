@@ -1,0 +1,20 @@
+{
+    "general_phrases": {
+      "close": "Close",
+      "save": "Save",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "retry": "Retry",
+      "submit": "Submit",
+      "reload": "Reload",
+      "user": "User",
+      "save_user": "Save User",
+      "add_user": "Add User",
+      "lock": "Lock",
+      "activate": "Activate",
+      "updated_at": "Updated at",
+      "cerated_at": "Created at",
+      "all_users": "All Users"
+    }
+  }

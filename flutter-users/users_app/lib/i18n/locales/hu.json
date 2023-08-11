@@ -1,0 +1,20 @@
+{
+    "general_phrases": {
+      "close": "Bezárás",
+      "save": "Mentés",
+      "delete": "Törlés",
+      "cancel": "Mégse",
+      "edit": "Szerk",
+      "retry": "Retry",
+      "submit": "Submit",
+      "reload": "Reload",
+      "user": "Júzer",
+      "save_user": "Mentés",
+      "add_user": "Újjúzer",
+      "lock": "Lock",
+      "activate": "unlock",
+      "updated_at": "Frissítve",
+      "cerated_at": "Létrehozva",
+      "all_users": "Júzerek"
+    }
+  }

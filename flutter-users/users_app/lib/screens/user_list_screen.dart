@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:users_app/i18n/i18n_provider.dart';
 import 'package:users_app/providers/users_provider.dart';
 import 'package:users_app/screens/edit_user_screen.dart';
 import 'package:users_app/screens/new_user.dart';
-
 import '../models/user.dart';
 
 class UserListScreen extends ConsumerWidget {
@@ -12,19 +12,17 @@ class UserListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Future handleStatusChange(User user) async {
-      return await ref.read(updateUserStatusMutation).mutate(user);
-    }
 
     Future handleDelete(int userId) async {
       return await ref.read(deleteUserMutation).mutate(userId);
     }
 
     final AsyncValue<List<User>> users = ref.watch(getAllUsersProvider);
+
     final primaryColor = Theme.of(context).colorScheme.primaryContainer;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('All Users'),
+        title: Text(context.tr("general_phrases.all_users")),
         actions: [
           TextButton.icon(
             onPressed: users.isRefreshing
@@ -37,7 +35,7 @@ class UserListScreen extends ConsumerWidget {
                     );
                   },
             icon: const Icon(Icons.add),
-            label: const Text('Add User'),
+            label: Text(context.tr('general_phrases.add_user')),
           )
         ],
       ),
@@ -47,10 +45,12 @@ class UserListScreen extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   return HookBuilder(builder: (context) {
                     final user = allUsers[index];
-                
-                    final updateMutation = useState(updateUserStatusMutation2());
-                    final isUserLoading = ref.watch(updateMutation.value).isLoading;
-                    Future handleStatusChange2(User user) async {
+
+                    final updateMutation =
+                        useState(updateUserStatusMutation2());
+                    final isUserLoading =
+                        ref.watch(updateMutation.value).isLoading;
+                    Future handleStatusChange(User user) async {
                       return await ref.read(updateMutation.value).mutate(user);
                     }
 
@@ -90,20 +90,20 @@ class UserListScreen extends ConsumerWidget {
                                       onPressed: isUserLoading
                                           ? null
                                           : () {
-                                              handleStatusChange2(user);
+                                              handleStatusChange(user);
                                             },
                                       icon: user.status == Status.active
                                           ? const Icon(Icons.lock)
                                           : const Icon(Icons.lock_open),
                                       label: Text(user.status == Status.active
-                                          ? 'Lock'
-                                          : 'Activate'),
+                                          ? context.tr('general_phrases.lock')
+                                          : context.tr('general_phrases.activate')),
                                     ),
                                   ),
                                   const SizedBox(width: 10),
                                   ElevatedButton.icon(
                                     icon: const Icon(Icons.edit),
-                                    label: const Text('Edit'),
+                                    label: Text(context.tr('general_phrases.edit')),
                                     onPressed: isUserLoading
                                         ? null
                                         : () {
@@ -119,7 +119,7 @@ class UserListScreen extends ConsumerWidget {
                                   ),
                                   const SizedBox(width: 10),
                                   TextButton.icon(
-                                      label: const Text('Delete'),
+                                      label: Text(context.tr('general_phrases.delete')),
                                       onPressed: isUserLoading
                                           ? null
                                           : () {
