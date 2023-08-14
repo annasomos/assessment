@@ -57,9 +57,6 @@ class UserListScreen extends ConsumerWidget {
                     return Card(
                       key: ValueKey(user),
                       elevation: 2,
-                      color: user.status == Status.active
-                          ? primaryColor
-                          : primaryColor.withOpacity(0.4),
                       margin: const EdgeInsets.symmetric(
                           vertical: 8, horizontal: 16),
                       child: Container(
@@ -112,6 +109,8 @@ class UserListScreen extends ConsumerWidget {
                                                 builder: (ctx) =>
                                                     EditUserScreen(
                                                   userId: user.id,
+                                                  firstName: user.firstName,
+                                                  lastName: user.lastName,
                                                 ),
                                               ),
                                             );

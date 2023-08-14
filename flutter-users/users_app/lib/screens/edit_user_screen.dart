@@ -1,29 +1,54 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:users_app/models/user_params.dart';
+import 'package:users_app/presentation/widgets/user_form.dart';
+import '../models/field/field.dart';
 import '../models/user.dart';
 import 'package:flutter/material.dart';
+import '../presentation/utils/form_handler.dart';
 import '../providers/users_provider.dart';
+import '../utils/translated_value.dart';
 
-class EditUserScreen extends ConsumerWidget {
-  const EditUserScreen({super.key, required this.userId});
+class EditUserScreen extends HookConsumerWidget {
+  const EditUserScreen(
+      {super.key,
+      required this.userId,
+      required this.firstName,
+      required this.lastName});
 
   final int userId;
+  final String firstName;
+  final String lastName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String firstName = '';
-    String lastName = '';
     Future onSave(UserParams params) async {
       return await ref.read(editUserMutation).mutate(params);
     }
 
     final AsyncValue<User> user = ref.watch(getUserByIdProvider(userId));
-    user.whenData(
-      (value) {
-        firstName = value.firstName;
-        lastName = value.lastName;
-      },
+    print(
+      TranslatedValue.key(
+        "lastname",
+      ),
     );
+    final formHandler = useFormHandler({
+      "first_name": Field.text(
+        key: "first_name",
+        initialValue: firstName,
+        label: TranslatedValue.key(
+          "firstname",
+        ),
+      ),
+      "last_name": Field.text(
+        key: "last_name",
+        initialValue: lastName,
+        label: TranslatedValue.key(
+          "lastname",
+        ),
+      ),
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: Text('User #$userId'),
@@ -32,25 +57,17 @@ class EditUserScreen extends ConsumerWidget {
         data: (data) => Center(
           child: Column(
             children: [
-              TextFormField(
-                initialValue: data.firstName,
-                onChanged: (value) {
-                  firstName = value;
-                },
-              ),
-              TextFormField(
-                initialValue: data.lastName,
-                onChanged: (value) {
-                  lastName = value;
-                },
-              ),
+              UserForm(formHandler: formHandler),
               ElevatedButton.icon(
                 label: const Text('Save'),
                 icon: const Icon(Icons.save),
                 onPressed: () {
                   final params = UserParams(
-                      id: userId, firstName: firstName, lastName: lastName);
-                  onSave(params).then((value) => Navigator.of(context).pop(context));
+                      id: userId,
+                      firstName: formHandler.getFieldValue("first_name"),
+                      lastName: formHandler.getFieldValue("last_name"));
+                  onSave(params)
+                      .then((value) => Navigator.of(context).pop(context));
                 },
               )
             ],
