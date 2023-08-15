@@ -15,6 +15,10 @@
       "activate": "Activate",
       "updated_at": "Updated at",
       "cerated_at": "Created at",
-      "all_users": "All Users"
+      "all_users": "All Users",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "general_error": "Uh oh, something went wrong."
+
     }
   }

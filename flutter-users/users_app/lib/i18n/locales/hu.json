@@ -8,13 +8,16 @@
       "retry": "Retry",
       "submit": "Submit",
       "reload": "Reload",
-      "user": "Júzer",
-      "save_user": "Mentés",
-      "add_user": "Újjúzer",
-      "lock": "Lock",
-      "activate": "unlock",
+      "user": "Felhasználó",
+      "save_user": "Felhasználó mentése",
+      "add_user": "Új felhasználó",
+      "lock": "Lezár",
+      "activate": "Kiold",
       "updated_at": "Frissítve",
       "cerated_at": "Létrehozva",
-      "all_users": "Júzerek"
+      "all_users": "Felhasználók",
+      "first_name": "Keresztnév",
+      "last_name": "Vezetéknév",
+      "general_error": "Hoppá, valami nem stimmel! Kérjük, próbáld újra."
     }
   }

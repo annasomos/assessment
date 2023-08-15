@@ -44,7 +44,7 @@ class TranslatedKeyValue implements TranslatedValue {
   @override
   String getValue(WidgetRef ref) {
     final translationKey = getRaw();
-    return ref.watch(i18nProvider.notifier).tr(translationKey, params: params);
+    return ref.watch(i18nProvider.notifier).tr(translationKey);
   }
 
   @override

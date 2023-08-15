@@ -148,7 +148,7 @@ class AppTheme extends InheritedWidget {
           elevation: 0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.hs)),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          padding: largeButtonPadding,
+          padding: smallButtonPadding,
         ).copyWith(
           textStyle: buttonTextStyle,
           elevation: MaterialStateProperty.all<double>(0),
@@ -169,6 +169,11 @@ class AppTheme extends InheritedWidget {
   EdgeInsets get largeButtonPadding => EdgeInsets.symmetric(
         horizontal: 20.hs,
         vertical: 16.hs,
+      );
+
+  EdgeInsets get smallButtonPadding => EdgeInsets.symmetric(
+        horizontal: 12.hs,
+        vertical: 10.hs,
       );
 
   InputFieldTheme getInputFieldTheme(FieldType fieldType) {

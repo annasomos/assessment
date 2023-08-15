@@ -1,5 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:users_app/i18n/i18n.dart';
 import 'package:users_app/models/field/field.dart';
 import 'package:users_app/models/user_params.dart';
 import 'package:flutter/material.dart';
@@ -19,14 +19,14 @@ class NewUserScreen extends HookConsumerWidget {
         key: "first_name",
         initialValue: "",
         label: TranslatedValue.key(
-          "firstname",
+          "general_phrases.first_name",
         ),
       ),
       "last_name": Field.text(
         key: "last_name",
         initialValue: "",
         label: TranslatedValue.key(
-          "lastname",
+          "general_phrases.last_name",
         ),
       ),
     });
@@ -37,14 +37,14 @@ class NewUserScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add User'),
+        title: Text(context.tr("general_phrases.add_user")),
       ),
       body: Center(
         child: Column(
           children: [
             UserForm(formHandler: formHandler),
             ElevatedButton.icon(
-              label: const Text('Save User'),
+              label: Text(context.tr("general_phrases.save")),
               icon: const Icon(Icons.save),
               onPressed: users.isRefreshing
                   ? null
