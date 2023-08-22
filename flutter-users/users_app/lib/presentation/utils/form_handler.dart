@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:users_app/models/field/field.dart';
+import 'package:users_app/models/field/fields.dart';
 
 extension FieldIterableExtension on Iterable<Field> {
   Field? get firstErroneousField => firstWhereOrNull((field) => field.hasError);
@@ -34,6 +35,7 @@ mixin FormHandlerState {
   F getField<F>(String key) => fieldMap[key]! as F;
 
   V getFieldValue<V>(String key) => (fieldMap[key]! as Field<V>).draftValue;
+  V getSelectFieldValue<V>(String key) => (fieldMap[key]! as SelectField).draftValue!.value;
 }
 
 mixin FormHandler<T extends FormHandlerState> {
@@ -43,6 +45,8 @@ mixin FormHandler<T extends FormHandlerState> {
   F getField<F>(String key) => formHolder.fieldMap[key]! as F;
 
   V getFieldValue<V>(String key) => (formHolder.fieldMap[key]! as Field<V>).draftValue;
+
+  V getSelectFieldValue<V>(String key) => (formHolder.fieldMap[key]! as SelectField).draftValue!.value;
 
   void setField(Field field) => emitFields({...formHolder.fieldMap, field.key: field});
 

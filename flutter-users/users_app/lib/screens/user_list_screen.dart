@@ -1,11 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:users_app/i18n/i18n.dart';
+import 'package:users_app/models/user.dart';
+import 'package:users_app/presentation/routing/app_auto_router.gr.dart';
+import 'package:users_app/presentation/theme/app_theme.dart';
 import 'package:users_app/providers/users_provider.dart';
-import 'package:users_app/screens/edit_user_screen.dart';
-import 'package:users_app/screens/new_user.dart';
-import '../models/user.dart';
 
 class UserListScreen extends ConsumerWidget {
   const UserListScreen({super.key});
@@ -21,33 +22,40 @@ class UserListScreen extends ConsumerWidget {
     }
 
     final AsyncValue<List<User>> users = ref.watch(getAllUsersProvider);
-    final activeContainerColor =
-        Theme.of(context).colorScheme.secondaryContainer;
-    final lockedContainerColor =
-        Theme.of(context).colorScheme.primaryContainer.withOpacity(0.1);
-    final activeTextColor = Theme.of(context).colorScheme.onPrimaryContainer;
-    const lockedTextColor = Color.fromARGB(123, 0, 0, 0);
+    final activeContainerColor = context.appTheme.primaryContainer;
+    final lockedContainerColor = context.appTheme.secondaryContainer;
+    final activeTextColor = context.appTheme.primaryContainerText;
+    final lockedTextColor = context.appTheme.onSecondary;
+    final usernameText = context.appTheme.headingText;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.tr("general_phrases.all_users")),
+        title: Text(
+          context.tr("general_phrases.all_users"),
+          style: TextStyle(color: context.appTheme.onBackground),
+        ),
+        backgroundColor: context.appTheme.background,
         actions: [
           TextButton.icon(
+            style:
+                TextButton.styleFrom(iconColor: context.appTheme.primaryButton),
             onPressed: users.isRefreshing
                 ? null
                 : () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (ctx) => const NewUserScreen(),
-                      ),
-                    );
+                    context.navigateTo(
+                        const SharedRoute(children: [NewUserRoute()]));
                   },
             icon: const Icon(Icons.add),
-            label: Text(context.tr('general_phrases.add_user')),
+            label: Text(
+              context.tr('general_phrases.add_user'),
+              style: TextStyle(color: context.appTheme.primaryButton),
+            ),
           )
         ],
       ),
+      backgroundColor: context.appTheme.background,
       body: users.when(
+          skipLoadingOnRefresh: false,
           data: (allUsers) => ListView.builder(
                 itemCount: allUsers.length,
                 itemBuilder: (context, index) {
@@ -62,15 +70,44 @@ class UserListScreen extends ConsumerWidget {
                       return await ref.read(updateMutation.value).mutate(user);
                     }
 
-                    return Card(
+                    return Dismissible(
                       key: ValueKey(user),
-                      elevation: 2,
-                      color: isActive(user)
-                          ? activeContainerColor.withOpacity(0.4)
-                          : lockedContainerColor,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
+                      confirmDismiss: (direction) {
+                        return showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title:
+                                  Text(context.tr("general_phrases.confirm")),
+                              content: Text(
+                                context.tr("general_phrases.confirm_delete"),
+                              ),
+                              actions: [
+                                TextButton(
+                                    onPressed: () =>
+                                    context.popRoute(true),
+                                    child: Text(
+                                        context.tr("general_phrases.delete"))),
+                                TextButton(
+                                  onPressed: () =>
+                                    context.popRoute(false),
+                                  child: Text(
+                                      context.tr("general_phrases.cancel")),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      onDismissed: (direction) {
+                        handleDelete(user.id);
+                      },
                       child: Container(
+                        color: isActive(user)
+                            ? activeContainerColor
+                            : lockedContainerColor,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 16),
                         padding: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 16),
                         child: Center(
@@ -81,9 +118,7 @@ class UserListScreen extends ConsumerWidget {
                                 user.getFullName(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: isActive(user)
-                                      ? activeTextColor
-                                      : lockedTextColor,
+                                  color: usernameText,
                                   fontSize: 18,
                                 ),
                               ),
@@ -111,7 +146,10 @@ class UserListScreen extends ConsumerWidget {
                                   Expanded(
                                     child: ElevatedButton.icon(
                                       key: ValueKey(user),
-                                      style: ElevatedButton.styleFrom(backgroundColor: isActive(user) ? activeContainerColor : lockedTextColor),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            context.appTheme.primaryButton,
+                                      ),
                                       onPressed: isUserLoading
                                           ? null
                                           : () {
@@ -132,7 +170,10 @@ class UserListScreen extends ConsumerWidget {
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: ElevatedButton.icon(
-                                      style: ElevatedButton.styleFrom(backgroundColor: isActive(user) ? activeContainerColor : lockedTextColor),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            context.appTheme.primaryButton,
+                                      ),
                                       icon: const Icon(Icons.edit),
                                       label: Text(
                                         context.tr('general_phrases.edit'),
@@ -141,32 +182,13 @@ class UserListScreen extends ConsumerWidget {
                                       onPressed: isUserLoading
                                           ? null
                                           : () {
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                  builder: (ctx) =>
-                                                      EditUserScreen(
-                                                    userId: user.id,
-                                                    firstName: user.firstName,
-                                                    lastName: user.lastName,
-                                                  ),
-                                                ),
-                                              );
+                                              context.navigateTo(EditUserRoute(
+                                                  userId: user.id,
+                                                  firstName: user.firstName,
+                                                  lastName: user.lastName,
+                                                  status: user.status.name));
                                             },
                                     ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: TextButton.icon(
-                                        label: Text(
-                                          context.tr('general_phrases.delete'),
-                                          style: TextStyle(fontSize: 12, color: isActive(user) ? activeTextColor : lockedTextColor),
-                                        ),
-                                        onPressed: isUserLoading
-                                            ? null
-                                            : () {
-                                                handleDelete(user.id);
-                                              },
-                                        icon: Icon(Icons.delete, color: isActive(user) ? activeTextColor : lockedTextColor,)),
                                   ),
                                 ],
                               ),

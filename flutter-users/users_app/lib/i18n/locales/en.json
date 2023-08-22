@@ -18,7 +18,17 @@
       "all_users": "All Users",
       "first_name": "First Name",
       "last_name": "Last Name",
-      "general_error": "Uh oh, something went wrong."
+      "general_error": "Uh oh, something went wrong.",
+      "status": "Status",
+      "active": "Active",
+      "locked": "Locked",
+      "select_status": "Select status...",
+      "first_name_error": "First name is required!",
+      "last_name_error": "Last name is required!",
+      "first_name_invalid": "First name should be at least 2 characters long.",
+      "last_name_invalid": "Last name should be at least 2 characters long.",
+      "confirm_delete": "Are you sure you wish to delete this item?",
+      "confirm": "Confirm"
 
     }
   }

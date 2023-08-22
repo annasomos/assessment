@@ -72,6 +72,7 @@ dependencies:
   hooks_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
   mockito: ^5.2.0
+  collection: ^1.17.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -94,6 +95,17 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/i18n/locales/
+    - assets/icons/arrow-left.svg
+    - assets/icons/calendar.svg
+    - assets/icons/chevron-down.svg
+    - assets/icons/close.svg
+    - assets/icons/eye-slash.svg
+    - assets/icons/eye.svg
+    - assets/icons/facebook-flat.svg
+    - assets/icons/google-flat.svg
+    - assets/icons/apple-flat.svg
+    - assets/icons/finger-print.svg
+    - assets/icons/face-id.svg
   #  - test/i18n/locales/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

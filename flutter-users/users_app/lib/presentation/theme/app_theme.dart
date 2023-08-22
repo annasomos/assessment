@@ -19,12 +19,13 @@ class AppTheme extends InheritedWidget {
   @override
   bool updateShouldNotify(AppTheme oldWidget) => oldWidget.isDark != isDark;
 
-  static AppTheme of(BuildContext context) => context.dependOnInheritedWidgetOfExactType<AppTheme>()!;
+  static AppTheme of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<AppTheme>()!;
 
   bool get isDark => brightness == Brightness.dark;
 
-  static const white = Color(0xFFFFFFFF);
-  static const dark = Color(0xFF222831);
+  static const white = Color.fromARGB(255, 251, 251, 251);
+  static const dark = Color.fromARGB(255, 29, 38, 125);
 
   static const yellow = Color(0xFFFFD059);
   static const purple = Color(0xFF704cff);
@@ -36,31 +37,61 @@ class AppTheme extends InheritedWidget {
   static const redLight = Color.fromARGB(255, 253, 53, 77);
   static const redDark = Color(0xFFDC0018);
 
-  static const blueLight = Color.fromARGB(255, 128, 190, 252);
-  static const blueDark = Color(0xFF00679A);
+  static const purpleLight = Color.fromARGB(255, 45, 42, 51);
+  static const purpleDark = Color.fromARGB(255, 12, 19, 79);
 
-  static const grayDark = Color(0xFFBCBCBC);
-  static const grayLight = Color(0xFFDADADA);
+  static const blueLight = Color.fromARGB(255, 212, 173, 252);
+  static const blueDark = Color.fromARGB(255, 79, 78, 81);
 
-  static const backgroundLight = Color(0xFFFAFAFA);
-  static const backgroundDark = Color(0xFF393E46);
+  static const grayDark = Color.fromARGB(255, 40, 40, 40);
+  static const grayLight = Color.fromARGB(255, 150, 145, 163);
 
-  TextStyle get h1 => GoogleFonts.roboto(fontSize: 96.hs, height: 1.1, fontWeight: FontWeight.w100);
-  TextStyle get h2 => GoogleFonts.roboto(fontSize: 60.hs, height: 1.2, fontWeight: FontWeight.w100);
-  TextStyle get h3 => GoogleFonts.roboto(fontSize: 36.hs, height: 1.1, fontWeight: FontWeight.w100);
-  TextStyle get h4 => GoogleFonts.roboto(fontSize: 30.hs, height: 1.2, fontWeight: FontWeight.w500);
-  TextStyle get h5 => GoogleFonts.roboto(fontSize: 24.hs, height: 1.3, fontWeight: FontWeight.w500);
-  TextStyle get h6 => GoogleFonts.roboto(fontSize: 20.hs, height: 1.3, fontWeight: FontWeight.w500);
-  TextStyle get subtitle1 => GoogleFonts.roboto(fontSize: 12.hs, height: 1.4, fontWeight: FontWeight.w500);
-  TextStyle get subtitle2 => GoogleFonts.roboto(fontSize: 12.hs, height: 1.4, fontWeight: FontWeight.w300);
-  TextStyle get bodyText1 => GoogleFonts.roboto(fontSize: 16.hs, height: 1.4, fontWeight: FontWeight.normal);
-  TextStyle get bodyText2 => GoogleFonts.roboto(fontSize: 12.hs, height: 1.4, fontWeight: FontWeight.normal);
-  TextStyle get button => GoogleFonts.roboto(fontSize: 14.hs, height: 1.35, fontWeight: FontWeight.w500);
-  TextStyle get caption => GoogleFonts.roboto(fontSize: 12.hs, height: 1.45, fontWeight: FontWeight.normal);
-  TextStyle get overline => GoogleFonts.roboto(fontSize: 12.hs, height: 1.45, fontWeight: FontWeight.w500);
+  static const buttonPurple = Color.fromARGB(255, 166, 136, 250);
 
-  Color get primary => isDark ? blueLight : blueDark;
-  Color get onPrimary => white;
+
+  static const backgroundLight = Color.fromARGB(255, 215, 201, 248);
+  static const backgroundDark = Color.fromARGB(255, 26, 22, 37);
+
+  TextStyle get h1 => GoogleFonts.roboto(
+      fontSize: 96.hs, height: 1.1, fontWeight: FontWeight.w100);
+  TextStyle get h2 => GoogleFonts.roboto(
+      fontSize: 60.hs, height: 1.2, fontWeight: FontWeight.w100);
+  TextStyle get h3 => GoogleFonts.roboto(
+      fontSize: 36.hs, height: 1.1, fontWeight: FontWeight.w100);
+  TextStyle get h4 => GoogleFonts.roboto(
+      fontSize: 30.hs, height: 1.2, fontWeight: FontWeight.w500);
+  TextStyle get h5 => GoogleFonts.roboto(
+      fontSize: 24.hs, height: 1.3, fontWeight: FontWeight.w500);
+  TextStyle get h6 => GoogleFonts.roboto(
+      fontSize: 20.hs, height: 1.3, fontWeight: FontWeight.w500);
+  TextStyle get subtitle1 => GoogleFonts.roboto(
+      fontSize: 12.hs, height: 1.4, fontWeight: FontWeight.w500);
+  TextStyle get subtitle2 => GoogleFonts.roboto(
+      fontSize: 12.hs, height: 1.4, fontWeight: FontWeight.w300);
+  TextStyle get bodyText1 => GoogleFonts.roboto(
+      fontSize: 16.hs, height: 1.4, fontWeight: FontWeight.normal);
+  TextStyle get bodyText2 => GoogleFonts.roboto(
+      fontSize: 12.hs, height: 1.4, fontWeight: FontWeight.normal);
+  TextStyle get button => GoogleFonts.roboto(
+      fontSize: 14.hs, height: 1.35, fontWeight: FontWeight.w500);
+  TextStyle get caption => GoogleFonts.roboto(
+      fontSize: 12.hs, height: 1.45, fontWeight: FontWeight.normal);
+  TextStyle get overline => GoogleFonts.roboto(
+      fontSize: 12.hs, height: 1.45, fontWeight: FontWeight.w500);
+
+  Color get primary => isDark ? purpleLight : purpleDark;
+  Color get onPrimary => isDark ? white : backgroundDark;
+
+  Color get secondary => isDark ? white : blueDark;
+  Color get primaryButton => buttonPurple;
+  Color get onSecondary => isDark ? white : purpleDark;
+
+  Color get primaryContainer => isDark ? purpleLight : purpleDark;
+  Color get primaryContainerText => isDark ? grayLight : grayDark;
+
+  Color get secondaryContainer => isDark ? blueDark : white;
+
+  Color get headingText => isDark ? white : backgroundDark;
 
   Color get surface => isDark ? dark : white;
   Color get onSurface => isDark ? white : dark;
@@ -70,7 +101,7 @@ class AppTheme extends InheritedWidget {
 
   Color get error => isDark ? redLight : redDark;
   Color get success => isDark ? greenLight : greenDark;
-  Color get link => isDark ? blueLight : blueDark;
+  Color get link => isDark ? purpleLight : purpleDark;
 
   Color get disabledColor => isDark ? grayDark : grayLight;
   Color get iconColor => isDark ? white : dark;
@@ -102,7 +133,8 @@ class AppTheme extends InheritedWidget {
         outlinedButtonTheme: outlinedButtonThemeData,
         elevatedButtonTheme: elevatedButtonThemeData,
         scaffoldBackgroundColor: background,
-        colorScheme: ColorScheme.light(primary: primary).copyWith(background: background),
+        colorScheme: ColorScheme.light(primary: primary)
+            .copyWith(background: background),
       );
 
   TextButtonThemeData get textButtonThemeData => TextButtonThemeData(
@@ -110,7 +142,8 @@ class AppTheme extends InheritedWidget {
           foregroundColor: primary,
           elevation: 0,
           enableFeedback: false,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.hs)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24.hs)),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: largeButtonPadding,
         ).copyWith(
@@ -122,12 +155,14 @@ class AppTheme extends InheritedWidget {
         ),
       );
 
-  OutlinedButtonThemeData get outlinedButtonThemeData => OutlinedButtonThemeData(
+  OutlinedButtonThemeData get outlinedButtonThemeData =>
+      OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: primary,
           elevation: 0,
           padding: largeButtonPadding,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.hs)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24.hs)),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ).copyWith(
           textStyle: buttonTextStyle,
@@ -142,11 +177,13 @@ class AppTheme extends InheritedWidget {
         ),
       );
 
-  ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
+  ElevatedButtonThemeData get elevatedButtonThemeData =>
+      ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primary,
           elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.hs)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24.hs)),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: smallButtonPadding,
         ).copyWith(

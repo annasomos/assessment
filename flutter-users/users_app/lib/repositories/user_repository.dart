@@ -35,10 +35,11 @@ class UsersRepository {
     return res;
   }
 
-  Future<Response<dynamic>> editUser(UserParams params) async {
+  Future<Response<dynamic>> editUser(EditUserParams params) async {
     final res = await dio.put('/users/${params.id}.json', data: {
       'first_name': params.firstName,
       'last_name': params.lastName,
+      'status': params.status
     });
     return res;
   }
@@ -48,12 +49,14 @@ class UsersRepository {
     return res;
   }
 
-  Future<Response<dynamic>> addUser(UserParams params) async {
-    return await dio.post('/users.json', data: {
+  Future<Response<dynamic>> addUser(NewUserParams params) async {
+    final res = await dio.post('/users.json', data: {
       'first_name': params.firstName,
       'last_name': params.lastName,
-      'status': 'active',
+      'status': params.status,
     });
+        print(res);
+    return res;
   }
 
   Future<User> getUserById(int userId) async {

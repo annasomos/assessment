@@ -65,13 +65,13 @@ final deleteUserMutation = MutationProvider.create(
 );
 
 final editUserMutation = MutationProvider.create(
-  mutationFn: (ref, UserParams params) =>
+  mutationFn: (ref, EditUserParams params) =>
       ref.read(usersRepositoryProvider).editUser(params),
   onSuccess: (ref, __, ___) async => ref.invalidate(getAllUsersProvider),
 );
 
 final addUserMutation = MutationProvider.create(
-  mutationFn: (ref, UserParams params) =>
+  mutationFn: (ref, NewUserParams params) =>
       ref.read(usersRepositoryProvider).addUser(params),
   onSuccess: (ref, __, ___) async => ref.invalidate(getAllUsersProvider),
 );

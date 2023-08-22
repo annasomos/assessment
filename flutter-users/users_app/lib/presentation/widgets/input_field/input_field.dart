@@ -125,7 +125,7 @@ class InputField<T> extends HookConsumerWidget {
         return '';
       }
       final mandatorySign = mandatory ? '*' : '';
-      final displayLabel = label!.getValue(ref);
+      final displayLabel = label?.getValue(ref);
       return "$displayLabel$mandatorySign";
     }
     Widget? _getSuffix() {

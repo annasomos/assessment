@@ -10,7 +10,7 @@
       "reload": "Reload",
       "user": "Felhasználó",
       "save_user": "Felhasználó mentése",
-      "add_user": "Új felhasználó",
+      "add_user": "Új hozzáadása",
       "lock": "Lezár",
       "activate": "Kiold",
       "updated_at": "Frissítve",
@@ -18,6 +18,17 @@
       "all_users": "Felhasználók",
       "first_name": "Keresztnév",
       "last_name": "Vezetéknév",
-      "general_error": "Hoppá, valami nem stimmel! Kérjük, próbáld újra."
+      "general_error": "Hoppá, valami nem stimmel! Kérjük, próbáld újra.",
+      "status": "Állapot",
+      "active": "Aktív",
+      "locked": "Inaktív",
+      "select_status": "Állapot kiválasztása...",
+      "first_name_error": "Keresztnév megadása kötelező!",
+      "last_name_error": "Vezetéknév megadása kötelező!",
+      "first_name_invalid": "Legalább 2 karakter kötelező",
+      "last_name_invalid": "Legalább 2 karakter kötelező",
+      "confirm_delete": "Biztosan törölni szeretnéd ezt a felhasználót?",
+      "confirm": "Megerősítés"
+
     }
   }
